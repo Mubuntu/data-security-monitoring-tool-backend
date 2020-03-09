@@ -1,0 +1,54 @@
+[
+  {
+    "index": "logstash-*",
+    "ignore_unavailable": true
+  },
+  {
+    "timeout": "30000ms",
+    "highlight": {
+      "fields": { "*": {} },
+      "fragment_size": 2147483647,
+      "post_tags": ["@/kibana-highlighted-field@"],
+      "pre_tags": ["@kibana-highlighted-field@"]
+    },
+    "size": 500,
+    "sort": [{ "@timestamp": { "order": "desc", "unmapped_type": "string" } }],
+    "_source": { "excludes": [] },
+    "stored_fields": ["*"],
+    "script_fields": {},
+    "docvalue_fields": [
+      { "field": "@timestamp", "format": "date_time" },
+      { "field": "request_received_at", "format": "date_time" },
+      { "field": "request_sent_at", "format": "date_time" },
+      { "field": "response_received_at", "format": "date_time" },
+      { "field": "response_sent_at", "format": "date_time" },
+      { "field": "written_at", "format": "date_time" },
+      { "field": "custom_fields.request_end_at", "format": "date_time" },
+      { "field": "custom_fields.startTime", "format": "date_time" },
+      { "field": "custom_fields.@timestamp", "format": "date_time" },
+      { "field": "custom_fields.err_timestamp", "format": "date_time" },
+      { "field": "custom_fields.response_end_at", "format": "date_time" },
+      { "field": "custom_fields.expiredAt", "format": "date_time" },
+      { "field": "custom_fields.agrirouter_iotcf_end", "format": "date_time" }
+    ],
+    "query": {
+      "bool": {
+        "must": [{ "match_all": {} }, { "match_all": {} }],
+        "filter": [
+          { "match_phrase": { "type": { "query": "request" } } },
+          {
+            "range": {
+              "@timestamp": {
+                "format": "strict_date_optional_time",
+                "gte":" test",
+                "lte": "test"
+              }
+            }
+          }
+        ],
+        "should": [],
+        "must_not": []
+      }
+    }
+  }
+]

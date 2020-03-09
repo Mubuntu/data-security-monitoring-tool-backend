@@ -1,0 +1,34 @@
+{
+  "name": "data-security-monitoring-tool-backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./app.js"
+  },
+  "dependencies": {
+    "clipboardy": "^2.2.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "json-templates": "^3.0.0",
+    "loglevel": "^1.6.7",
+    "moment": "^2.24.0",
+    "morgan": "~1.9.1",
+    "puppeteer": "^2.1.1",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5",
+    "tough-cookie": "^3.0.1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "./cookies.json",
+      "*.json"
+    ]
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
