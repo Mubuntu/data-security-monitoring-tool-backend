@@ -7,8 +7,8 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch LogParser",
-            "program": "${workspaceFolder}/utils/logparser.js",
+            "name": "Launch requestSimulation",
+            "program": "${workspaceFolder}/utils/simulateRequests.js",
             "skipFiles": [
                 "<node_internals>/**"
             ]
@@ -16,7 +16,34 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch logRetrieval",
+            "program": "${workspaceFolder}/utils/retrieveLogs.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch  databaseConfig",
+            "program": "${workspaceFolder}/data/database.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch LogParser",
+            "program": "${workspaceFolder}/utils/logparser.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+               {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Server",
             "skipFiles": [
                 "<node_internals>/**"
             ],
