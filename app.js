@@ -13,7 +13,8 @@ const moment = require("moment");
 const CronJob = require("cron").CronJob;
 const logRetrieval = require("./utils/retrieveLogs");
 // set environment variables:
-require("dotenv").config({ path: __dirname + "/data/.env" });
+// require("dotenv").config({ path: __dirname + "/data/.env" });
+require("dotenv").config();
 console.log("username: ", process.env["USER"]);
 //check of waarden zijn opgehaald:
 if (!process.env["USER"] && !process.env["PASSWORD"]) {

@@ -68,17 +68,18 @@ const parse = bodyString => {
   //   logs.push(application);
   // }
 
-
-  let appLogs = hits.filter(rawLog=>rawLog._source.layer === "[NODEJS]" && rawLog._source.referer !== '-')
-  let logs = appLogs
-    .map(rawLog => {
-      if(rawLog._source.referer === '-'){
-
-      }
-      // enkel logs gegeneerd door de applicatie zelf opnemen
-        const log = logModel(rawLog);
-        return log;
-    })
+  let appLogs = hits.filter(
+    rawLog =>
+    // onder de parameter x_forwarded_for zouden we de logs moeten uitfilteren die gegereneerd werden vanuit het publieke ip adres van de data monitoring tool zelf
+    // zodra een http request wordt verzonden vanuit de security-backend zou deze niet moeten worden opgenomen in de database
+    // dit kan je doen door een vergelijking tussen de parameter x_forwarded_for (nadat je de lijst splitst) en   https://github.com/sindresorhus/public-ip
+      rawLog._source.layer === "[NODEJS]" && rawLog._source.referer !== "-"
+  );
+  let logs = appLogs.map(rawLog => {
+    // enkel logs gegeneerd door de applicatie zelf opnemen
+    const log = logModel(rawLog);
+    return log;
+  });
   console.log(logs);
 
   return logs;

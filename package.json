@@ -4,9 +4,17 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./app.js"
+    "dev": "nodemon ./app.js",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "clipboardy": "^2.2.0",
     "cookie-parser": "~1.4.4",
     "cron": "^1.8.2",
@@ -33,6 +41,9 @@
     ]
   },
   "devDependencies": {
-    "dotenv": "^8.2.0"
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "jest": "^25.2.3",
+    "supertest": "^4.0.2"
   }
 }

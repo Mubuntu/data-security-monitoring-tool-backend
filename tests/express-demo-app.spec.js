@@ -7,8 +7,7 @@ console.log(testEnv);
 const request = require("request-promise");
 const url =
   "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com";
-let authToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlBhdHJpY2tGcmlzb24iLCJpZCI6Ijk4Yjk0ZWRhLTM1ODgtNDYwNC1hZmQzLTE1ODdmZDU2NmRjZiIsImlhdCI6MTU4NTUwMDYzMywiZXhwIjoxNTg1NTQzODMzfQ.1a7mumH43f_TRAceiHDMFbFJebQjO8OT9MbQXMDf1eQ";
+let authToken = "";
 
 describe("create logs for demo-express-app", () => {
   it("should retrieve a list of users", async () => {
@@ -43,8 +42,6 @@ describe("create logs for demo-express-app", () => {
     });
   });
 
-  
-
   it("should login a user in", async () => {
     const options = {
       method: "POST",
@@ -70,12 +67,11 @@ describe("create logs for demo-express-app", () => {
       resolveWithFullResponse: true
     };
 
-    await request(options).then((res) => {
-    })
-    .catch(err=>{
-      if(err)
-      console.log(err.statusCode)
-      expect(err.statusCode).toBe(401);
-    });
+    await request(options)
+      .then(res => {})
+      .catch(err => {
+        if (err) console.log(err.statusCode);
+        expect(err.statusCode).toBe(401);
+      });
   });
 });
