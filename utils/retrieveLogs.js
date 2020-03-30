@@ -3,7 +3,7 @@ const fs = require("fs").promises;
 const moment = require("moment");
 const retrieveCookie = require("./scrapeAuthCookie");
 const logParser = require("./logParser");
-
+const simulate = require("./simulateRequests");
 const db = require("../data/database");
 const retrieveLogs = async (from, to) => {
   // return new Promise(async (resolve, reject) => {
@@ -164,22 +164,24 @@ const retrieveLogs = async (from, to) => {
       body: rawPayload.map(JSON.stringify).join("\n") + "\n"
     };
     await rp(options)
-      .then(response => {
+      .then(async response => {
         console.log("gegevens ontvangen van kibana");
 
         //======================== PARSE individual logs and retrieve necessary components ==========================================
         const bodyString = response.body;
-
-        const logs = logParser(bodyString);
-        db.bulkCreateLog(logs).then(newLogs => {
-          // stel HTTP requests op
-          simulation
-            .simulate(newLogs)
-            .then(logsWithSimulatedRequests=>{
-              // schrijf weg naar db
-            })
-            .catch(err => console.log(err));
-        });
+        // iin bulkcreateLog then
+        // simulate(newLogs)
+        // .then(async logsWithSimulatedRequests => {
+        //   // schrijf weg naar db
+        //   await db.bulkUpdateLogs(logsWithSimulatedRequests);
+        // })
+        // .catch(err => console.log(err));
+        const logs = await logParser(bodyString);
+        await db.bulkCreateLog(logs);
+        const returnVariables = logs => {
+          simulate(logs)
+        };
+        db.readLogs(moment(from, "YYYY-MM-DDTHH:mm:ss").toDate(), moment(to, "YYYY-MM-DDTHH:mm:ss").toDate(),returnVariables )
         // fs.writeFile("./data/logsDB.json", JSON.stringify(logs)).then(err => {
         //   if (err) {
         //     throw err;
@@ -273,12 +275,12 @@ const retrieveLogs = async (from, to) => {
   // }); // promise
 };
 
-// const from = moment()
-//   .subtract("7", "days")
-//   .toISOString();
-// const to = moment().toISOString();
+const from = moment()
+  .subtract("7", "days")
+  .toISOString();
+const to = moment().toISOString();
 
-const data = retrieveLogs();
+const data = retrieveLogs(from, to);
 // setTimeout(() => console.log(data), 10000);
 
 module.exports = retrieveLogs;

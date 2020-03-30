@@ -3,7 +3,7 @@ const DataStore = require("nedb");
 const moment = require("moment");
 // Persistent datastore with automatic loading
 const logsDB = new DataStore({
-  filename: "./data/logsDB.ndjson",
+  filename: "./data/logdb.ndjson",
   autoload: true,
   timestampData: true,
   corruptAlertThreshold: 1
@@ -16,11 +16,42 @@ const logModel = require("./model/logModel");
 logsDB.loadDatabase();
 
 // zelf bestand compacten?: https://github.com/louischatriot/nelogsDB#persistence
-const bulkCreateLog = logsArray => {
-  logsDB.insert(logsArray, (err, newDocs) => {
-    if (err) throw err;
-    console.log(`${newDocs.length} logs inserted.`);
+const bulkCreateLogs = logsArray => {
+  return new Promise((resolve, reject) => {
+    logsDB.insert(logsArray, (err, newDocs) => {
+      if (err) console.log(err);
+      if (newDocs === undefined) {
+        console.log(`0 logs inserted.`);
+        resolve(0);
+      } else {
+        console.log(`${newDocs.length || 0} logs inserted.`);
+        resolve(newDocs);
+      }
+      logsDB.persistence.compactDatafile();
+    });
   });
+};
+
+const bulkUpdateLogs = logsArray => {
+  let numAffected = 0;
+
+  for (let log of logsArray) {
+    try {
+      logsDB.update(
+        { _id: log._id },
+        { $set: { simulatedResponse: log.simulatedResponse, simulated: true } },
+        {},
+        (err, numOfUpdates) => {
+          if (err) throw err;
+          numAffected += numOfUpdates;
+          // console.log(numOfUpdates, "rows updated");
+        }
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  logsDB.persistence.compactDatafile();
 };
 
 const createLog = logObject => {
@@ -71,23 +102,21 @@ const createLog = logObject => {
  * @param {*} skip
  */
 // date moet een isoString zijn dus moment().toIsoDate()
-const readLogs = (start, end, app_name, limit = 100, skip = 0, callback) => {
-  if (app_name) {
-    logsDB.find(
-      {
-        $and: [
-          { received_at: { $gte: start } },
-          { received_at: { $lte: end } },
-          { application_name: app_name }
-        ]
-      },
-      (err, docs) => {
-        if (err) throw err;
-        // console.log(docs);
-        callback(docs);
-      }
-    );
-  }
+const readLogs = (start, end, callback) => {
+  logsDB.find(
+    {
+      $and: [
+        { request_received_at: { $gte: start } },
+        { request_received_at: { $lte: end } }
+        // { application_name: app_name }
+      ]
+    },
+    (err, docs) => {
+      if (err) throw err;
+      // console.log(docs);
+      callback(docs);
+    }
+  );
 };
 
 const aLog = {
@@ -126,49 +155,46 @@ const aLog = {
 };
 // createLog(aLog)
 // 2020-03-11T14:16:2 1.457001923Z
-let start = moment("2020-03-1114:16:21.457001923Z", "YYYY-MM-DDTHH:mm:ss.SSS");
-console.log(start.toString());
-let end = moment();
-// readLogs(start, end, "express-demo-app");
+// let start = moment("2020-03-1114:16:21.457001923Z", "YYYY-MM-DDTHH:mm:ss.SSS");
+// console.log(start.toString());
+// let end = moment();
 
-// let logs = logsDB.find(
-//   {
-//     $and: [
-//       { request_received_at: { $gte: start.toDate(), $lte: end.toDate() } },
-
-//       { application_name: "express-demo-app" }
-//     ]
-//     // request_received_at: { $lt: new Date() }
-//     // application_name: "express-demo-app"
-//   },
-//   (err, docs) => {
-//     if (err) throw err;
-
-//     console.log(docs);
-//     return docs;
+// let updatedLog = {
+//   simulatedResponse: {
+//     status: 200,
+//     statusText: "OK",
+//     url:
+//       "http://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com/users",
+//     method: "get",
+//     headers: {
+//       "content-length": "780",
+//       "content-type": "application/json; charset=utf-8",
+//       date: "Mon, 30 Mar 2020 12:41:32 GMT",
+//       etag: 'W/"30c-kMwshdP43OKpmUsx8OqbMc/3CHI"',
+//       "x-powered-by": "Express",
+//       "x-vcap-request-id": "13a7c521-b4a9-451b-4745-1a170139446f",
+//       connection: "close",
+//       "strict-transport-security":
+//         "max-age=31536000; includeSubDomains; preload;"
+//     }
 //   }
-// );
+// };
+// let arr = [];
+// arr.push(updatedLog);
+// bulkUpdateLogs(arr);
+// console.log(log);
 
-// update document
-let log = logsDB.findOne({ _id: "fRPDB3EBUUL1vWPuQ5lO" }, (err, doc) => {
-  if (err) throw err;
-  console.log(doc);
-  const resp = 444;
-  logsDB.update(
-    { _id: "fRPDB3EBUUL1vWPuQ5lO" },
-    { response: resp },
-    {},
-    (err, numAffected, affectedDocs) => {
-      if (err) throw err;
-      console.log(`${numAffected} rows updated`);
-      console.log(affectedDocs);
-    }
-  );
-});
-
-console.log(log);
+const from = moment()
+  .subtract("7", "days")
+  .toDate();
+const to = moment().toDate();
+const callback = logs => {
+  console.log(logs);
+};
+// readLogs(from, to, callback)
 module.exports = {
-  bulkCreateLog: bulkCreateLog,
-  createLog: createLog,
-  readLogs: readLogs
+  bulkCreateLog: bulkCreateLogs,
+  // createLog: createLog,
+  readLogs: readLogs,
+  bulkUpdateLogs: bulkUpdateLogs
 };

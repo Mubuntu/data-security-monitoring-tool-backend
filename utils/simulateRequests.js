@@ -2,14 +2,17 @@
 const _ = require("lodash");
 const axios = require("axios");
 const DataStore = require("nedb");
-const moment = require("moment");
 // Persistent datastore with automatic loading
-const db = new DataStore({
-  filename: "./data/test.ndjson",
+const logsdb = new DataStore({
+  filename: "./data/test.logsdb",
   autoload: true,
   timestampData: true,
   corruptAlertThreshold: 1
 });
+
+const db = require('../data/database')
+
+
 // interceptor die alle responses waarvan de status niet 2xx is toch resolved
 const interceptor = axios.interceptors.response.use(
   res => {
@@ -48,7 +51,7 @@ const getAllRequests = async endpoints => {
       method: log.method
     }); //.catch(()=> null); // overbodig want gefaalde responses worden als succesvol geresolved
   });
-  return axios.all(requests);
+  return await axios.all(requests);
 };
 
 const simulate = async logs => {
@@ -86,7 +89,7 @@ const simulate = async logs => {
       endpoints[i].ids = ids;
       console.log(ids);
     }
-    console.log(endpoints);
+    // console.log(endpoints);
 
     // stel de http requests op
     // ----------------------------------------------------------------------------------------
@@ -104,7 +107,7 @@ const simulate = async logs => {
             url: res.config.url,
             method: res.config.method,
             headers: res.headers,
-            data: res.data
+            // data: res.data
           };
           simulatedResponses.push(response);
         });
@@ -123,7 +126,7 @@ const simulate = async logs => {
               endpoint.method.toLowerCase() === res.method
           );
           // voeg de gesimuleerde request toe aan logs
-         let logsWithSimulatedResponses = logsToBeChanged.map(log => {
+          let logsWithSimulatedResponses = logsToBeChanged.map(log => {
             return {
               ...log,
               simulated: true,
@@ -131,10 +134,13 @@ const simulate = async logs => {
             };
           });
           // merge de twee arrays (push zou gewoon een multidimensionale array vormen)
-          changedLogs.push.apply(changedLogs, logsWithSimulatedResponses)
+          changedLogs.push.apply(changedLogs, logsWithSimulatedResponses);
         }
-        console.log("originele logs: \n", rLogs)
-        console.log("updated logs: \n", changedLogs)
+        console.log("originele logs: \n", rLogs);
+        console.log("updated logs: \n", changedLogs);
+
+        db.bulkUpdateLogs(changedLogs)
+        // --------------------------------------------------------------------------------------
 
         resolve(changedLogs);
       })
@@ -144,158 +150,17 @@ const simulate = async logs => {
   });
 };
 // test data
-const logs = [
-  {
-    _id: "fRPDB3EBUUL1vWPuQ8lO",
-    application_name: "express-demo-app",
-    domain: [
-      "http://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com"
-    ],
-    path: "/users",
-    endpoint:
-      "http://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com/users",
-    method: "GET",
-    protocol: "HTTP/1.1",
-    response_status: 200,
-    response_content_type: "application/json; charset=utf-8",
-    organization_name: "s0021506423trial",
-    space_name: "dev",
-    logging_service_name: "express-app-logs",
-    service_name: "application-logs",
-    dest_ip_and_port: "-",
-    user_agent: "-",
-    request_received_at: { $$date: 1584969558996 },
-    remote_user: "-",
-    level: "INFO",
-    type: "-",
-    simulated: false
-  },
-  {
-    _id: "fRPDB3EBUUL1vWPuQ5lO",
-    application_name: "express-demo-app",
-    domain: [
-      "http://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com"
-    ],
-    path: "/users",
-    endpoint:
-      "http://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com/users",
-    method: "GET",
-    protocol: "HTTP/1.1",
-    response_status: 200,
-    response_content_type: "application/json; charset=utf-8",
-    organization_name: "s0021506423trial",
-    space_name: "dev",
-    logging_service_name: "express-app-logs",
-    service_name: "application-logs",
-    dest_ip_and_port: "-",
-    user_agent: "-",
-    request_received_at: { $$date: 1584969558996 },
-    remote_user: "-",
-    level: "INFO",
-    type: "-",
-    simulated: false
-  },
 
-  {
-    _id: "KhPCB3EBUUL1vWPuaQhw",
-    application_name: "express-demo-app",
-    domain: [
-      "http://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com"
-    ],
-    path: "/cats/facts",
-    endpoint:
-      "http://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com/cats/facts",
-    method: "GET",
-    protocol: "HTTP/1.1",
-    response_status: 200,
-    response_content_type: "application/json; charset=utf-8",
-    organization_name: "s0021506423trial",
-    space_name: "dev",
-    logging_service_name: "express-app-logs",
-    service_name: "application-logs",
-    dest_ip_and_port: "-",
-    user_agent: "-",
-    request_received_at: { $$date: 1584969509888 },
-    remote_user: "-",
-    level: "INFO",
-    type: "-",
-    simulated: false
-  },
-  {
-    _id: "fITbBnEBUUL1vWPuU-aC",
-    application_name: "express-demo-app",
-    domain: [
-      "https://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com"
-    ],
-    path: "/login",
-    endpoint:
-      "https://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com/login",
-    method: "POST",
-    protocol: "HTTP/1.1",
-    response_status: 200,
-    response_content_type: "application/json; charset=utf-8",
-    organization_name: "s0021506423trial",
-    space_name: "dev",
-    logging_service_name: "express-app-logs",
-    service_name: "application-logs",
-    dest_ip_and_port: "-",
-    user_agent: "-",
-    request_received_at: { $$date: 1584954365727 },
-    remote_user: "-",
-    level: "INFO",
-    type: "-",
-    simulated: false
-  },
-  {
-    _id: "n4TbBnEBUUL1vWPuC4TV",
-    application_name: "express-demo-app",
-    domain: [
-      "https://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com"
-    ],
-    path: "/login",
-    endpoint:
-      "https://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com/login",
-    method: "GET",
-    protocol: "HTTP/1.1",
-    response_status: 200,
-    response_content_type: "text/html; charset=utf-8",
-    organization_name: "s0021506423trial",
-    space_name: "dev",
-    logging_service_name: "express-app-logs",
-    service_name: "application-logs",
-    dest_ip_and_port: "-",
-    user_agent: "-",
-    request_received_at: { $$date: 1584954338737 },
-    remote_user: "-",
-    level: "INFO",
-    type: "-",
-    simulated: false
-  },
-  {
-    _id: "n4TbBnEBUUL1vWPuC6CV",
-    application_name: "express-demo-app",
-    domain: [
-      "https://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com"
-    ],
-    path: "/users/98b94eda-3588-4604-afd3-1587fd566dcf",
-    endpoint:
-      "https://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com/users/98b94eda-3588-4604-afd3-1587fd566dcf",
-    method: "GET",
-    protocol: "HTTP/1.1",
-    response_status: 200,
-    response_content_type: "text/html; charset=utf-8",
-    organization_name: "s0021506423trial",
-    space_name: "dev",
-    logging_service_name: "express-app-logs",
-    service_name: "application-logs",
-    dest_ip_and_port: "-",
-    user_agent: "-",
-    request_received_at: { $$date: 1584954338737 },
-    remote_user: "-",
-    level: "INFO",
-    type: "-",
-    simulated: false
-  }
-];
-
-simulate(logs);
+// testen van simulaties met test data: 
+// const moment = require('moment')
+// const from = moment()
+//   .subtract("7", "days").toDate()
+//   ;
+// const to = moment().toDate();
+// const callback = (logs)=>{
+//   console.log(logs)
+//   simulate(logs)
+// }
+// db.readLogs(from, to, callback)
+// simulate(logs);
+module.exports = simulate

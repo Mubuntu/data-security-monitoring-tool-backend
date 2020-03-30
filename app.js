@@ -5,7 +5,6 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
 const indexRouter = require("./routes/logRouter");
-const usersRouter = require("./routes/users");
 const app = express();
 
 const moment = require("moment");
@@ -32,7 +31,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
 
 // job that retrieves logs from kibana every 15 minutes
 // const atBootJob = new CronJob('@reboot', async()=>{
@@ -49,11 +47,12 @@ let start = null;
 let end = null;
 // job that retrieves logs from kibana every 15 minutes
 const logRetievalJob = new CronJob(
+  // "35 15 * * *",
   "*/15 * * * *",
   async () => {
     console.log("commencing job: log retrieval from Kibana");
     await logRetrieval(start, end);
-    console.l1og("ending job: log retrieval from Kibana");
+    console.log("ending job: log retrieval from Kibana");
   },
   () => {
     start = moment();
@@ -80,9 +79,9 @@ app.use(function(err, req, res, next) {
 });
 
 // "11-3-2020 16:00"
-const datum = moment("11-3-2020 16:00", "DD-MM-YYYY HH:mm");
-const compDate = moment("2020-03-11T14:16:21.467Z", "YYYY-MM-DDTHH:mm:ss.SSSZ");
-console.log(datum.isAfter(compDate));
+// const datum = moment("11-3-2020 16:00", "DD-MM-YYYY HH:mm");
+// const compDate = moment("2020-03-11T14:16:21.467Z", "YYYY-MM-DDTHH:mm:ss.SSSZ");
+// console.log(datum.isAfter(compDate));
 // no need 'const app = require('../app');' any more, cause it has defined in 'app.js' already.
 const debug = require("debug")("data-security-monitoring-tool-backend");
 app.set("port", process.env.PORT || 4000);
