@@ -1,7 +1,15 @@
 "use strict";
 const _ = require("lodash");
 const axios = require("axios");
-
+const DataStore = require("nedb");
+const moment = require("moment");
+// Persistent datastore with automatic loading
+const db = new DataStore({
+  filename: "./data/test.ndjson",
+  autoload: true,
+  timestampData: true,
+  corruptAlertThreshold: 1
+});
 // interceptor die alle responses waarvan de status niet 2xx is toch resolved
 const interceptor = axios.interceptors.response.use(
   res => {
@@ -30,13 +38,15 @@ const interceptor = axios.interceptors.response.use(
     }
   }
 );
+// axios.interceptors.request.eject(interceptor); // indien je de interceptor wilt verwijderen
 
+// concurrent requests processing https://stackoverflow.com/questions/53064328/axios-how-to-run-http-requests-concurrently-and-get-the-result-of-all-requests/53064769#53064769
 const getAllRequests = async endpoints => {
   const requests = endpoints.map(log => {
     return axios({
       url: log.endpoint.toLowerCase(),
       method: log.method
-    }); //.catch(()=> null);
+    }); //.catch(()=> null); // overbodig want gefaalde responses worden als succesvol geresolved
   });
   return axios.all(requests);
 };
@@ -80,22 +90,63 @@ const simulate = async logs => {
 
     // stel de http requests op
     // ----------------------------------------------------------------------------------------
-
     const responses = getAllRequests(endpoints);
     responses
       .then(values => {
         console.log(values);
-        // schrijf response object weg naar 
+        // schrijf response object weg naar logs
+        // endpoints.foreach( log.url === values.config.url)... bekijk prikbord voor img
+        let simulatedResponses = [];
+        values.forEach(res => {
+          let response = {
+            status: res.status,
+            statusText: res.statusText,
+            url: res.config.url,
+            method: res.config.method,
+            headers: res.headers,
+            data: res.data
+          };
+          simulatedResponses.push(response);
+        });
+        // itereer over de simulatie objecten en voeg
+        let changedLogs = [];
+
+        for (let endpoint of endpoints) {
+          // haal de logs op die de zelfde HTTP request uitvoeren
+          let logsToBeChanged = rLogs.filter(log =>
+            endpoint.ids.includes(log._id)
+          );
+          // vind de gesimuleerde request die deze logs matcht
+          let simulatedResponse = simulatedResponses.find(
+            res =>
+              endpoint.endpoint === res.url &&
+              endpoint.method.toLowerCase() === res.method
+          );
+          // voeg de gesimuleerde request toe aan logs
+         let logsWithSimulatedResponses = logsToBeChanged.map(log => {
+            return {
+              ...log,
+              simulated: true,
+              simulatedResponse: simulatedResponse
+            };
+          });
+          // merge de twee arrays (push zou gewoon een multidimensionale array vormen)
+          changedLogs.push.apply(changedLogs, logsWithSimulatedResponses)
+        }
+        console.log("originele logs: \n", rLogs)
+        console.log("updated logs: \n", changedLogs)
+
+        resolve(changedLogs);
       })
       .catch(err => reject(err)); // reject wordt nooit benaderd
-    resolve(values);
 
     // ----------------------------------------------------------------------------------------
   });
 };
+// test data
 const logs = [
   {
-    _id: "fRPDB3EBUUL1vWPuQ5lO",
+    _id: "fRPDB3EBUUL1vWPuQ8lO",
     application_name: "express-demo-app",
     domain: [
       "http://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com"
