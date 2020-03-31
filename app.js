@@ -7,10 +7,8 @@ const logger = require("morgan");
 const indexRouter = require("./routes/logRouter");
 const app = express();
 
-const moment = require("moment");
+const jobs = require("./cron/jobs");
 
-const CronJob = require("cron").CronJob;
-const logRetrieval = require("./utils/retrieveLogs");
 // set environment variables:
 // require("dotenv").config({ path: __dirname + "/data/.env" });
 require("dotenv").config();
@@ -30,38 +28,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// start cronjobs
+jobs.start();
 app.use("/", indexRouter);
 
-// job that retrieves logs from kibana every 15 minutes
-// const atBootJob = new CronJob('@reboot', async()=>{
-//   console.log('commencing initial job:log retrieval from Kibana');
-//   await logRetrieval()
-//   console.log('ending initial  job: log retrieval from Kibana')
-//   }, null,true,'Europe/Brussels')
-// atBootJob.start()
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
-let start = null;
-let end = null;
-// job that retrieves logs from kibana every 15 minutes
-const logRetievalJob = new CronJob(
-  // "35 15 * * *",
-  "*/15 * * * *",
-  async () => {
-    console.log("commencing job: log retrieval from Kibana");
-    await logRetrieval(start, end);
-    console.log("ending job: log retrieval from Kibana");
-  },
-  () => {
-    start = moment();
-    end = moment().add(15, "minutes");
-  },
-  true,
-  "Europe/Brussels"
-);
-logRetievalJob.start();
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

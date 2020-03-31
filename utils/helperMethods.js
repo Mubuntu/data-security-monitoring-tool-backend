@@ -1,4 +1,4 @@
-const dataPath= './data/logsDB.json'
+const dataPath= './db/logsDB.json'
 const fs = require('fs')
 // helper methods
 const readFile = (

@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs").promises;
-const cookiePath = "./data/cookies.json";
+const cookiePath = "./db/cookies.json";
 const moment = require("moment");
 const clipboardy = require("clipboardy");
 const rp = require("request-promise");

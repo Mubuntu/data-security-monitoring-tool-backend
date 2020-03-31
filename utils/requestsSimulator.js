@@ -4,14 +4,13 @@ const axios = require("axios");
 const DataStore = require("nedb");
 // Persistent datastore with automatic loading
 const logsdb = new DataStore({
-  filename: "./data/test.logsdb",
+  filename: "./db/test.logsdb",
   autoload: true,
   timestampData: true,
   corruptAlertThreshold: 1
 });
 
-const db = require('../data/database')
-
+const db = require("../db/database");
 
 // interceptor die alle responses waarvan de status niet 2xx is toch resolved
 const interceptor = axios.interceptors.response.use(
@@ -75,7 +74,7 @@ const simulate = async logs => {
         ids: []
       };
     });
-    console.log(endpoints);
+    // console.log(endpoints);
     // per endpoint moet je een array aanmaken aan id's (van een log) die dezelfde url bevatten
     for (let i = 0; i < endpoints.length; i++) {
       // stel een lijst van id logs op die hetzelfde opgegeven path en methode bevatten en voeg deze toe aan de vooropgestelde lijst:
@@ -96,7 +95,7 @@ const simulate = async logs => {
     const responses = getAllRequests(endpoints);
     responses
       .then(values => {
-        console.log(values);
+        // console.log(values);
         // schrijf response object weg naar logs
         // endpoints.foreach( log.url === values.config.url)... bekijk prikbord voor img
         let simulatedResponses = [];
@@ -106,7 +105,7 @@ const simulate = async logs => {
             statusText: res.statusText,
             url: res.config.url,
             method: res.config.method,
-            headers: res.headers,
+            headers: res.headers
             // data: res.data
           };
           simulatedResponses.push(response);
@@ -120,10 +119,11 @@ const simulate = async logs => {
             endpoint.ids.includes(log._id)
           );
           // vind de gesimuleerde request die deze logs matcht
+          console.log(endpoint)
           let simulatedResponse = simulatedResponses.find(
             res =>
-              endpoint.endpoint === res.url &&
-              endpoint.method.toLowerCase() === res.method
+              res.url === endpoint.endpoint &&
+              res.method === endpoint.method.toLowerCase()
           );
           // voeg de gesimuleerde request toe aan logs
           let logsWithSimulatedResponses = logsToBeChanged.map(log => {
@@ -135,11 +135,12 @@ const simulate = async logs => {
           });
           // merge de twee arrays (push zou gewoon een multidimensionale array vormen)
           changedLogs.push.apply(changedLogs, logsWithSimulatedResponses);
+          // console.log(changedLogs)
         }
         console.log("originele logs: \n", rLogs);
         console.log("updated logs: \n", changedLogs);
 
-        db.bulkUpdateLogs(changedLogs)
+        db.bulkUpdateLogs(changedLogs);
         // --------------------------------------------------------------------------------------
 
         resolve(changedLogs);
@@ -151,7 +152,7 @@ const simulate = async logs => {
 };
 // test data
 
-// testen van simulaties met test data: 
+// testen van simulaties met test data:
 // const moment = require('moment')
 // const from = moment()
 //   .subtract("7", "days").toDate()
@@ -163,4 +164,4 @@ const simulate = async logs => {
 // }
 // db.readLogs(from, to, callback)
 // simulate(logs);
-module.exports = simulate
+module.exports = simulate;

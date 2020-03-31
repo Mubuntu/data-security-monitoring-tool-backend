@@ -1,18 +1,13 @@
 "use strict";
 const fs = require("fs");
-const logPath = "./tmp/requestLogs.json";
 const moment = require("moment");
-const ip = require("public-ip");
-const logModel = require("../data/model/logModel");
+const logModel = require("../db/model/logModel");
 
 const parse = async bodyString => {
   const body = JSON.parse(bodyString);
   // raw logs
   const hits = body.responses[0].hits.hits;
-  let ip4 = await ip.v4();
 
-  // const logs = [];
-  // console.log(hits[0]);
   const length = hits.length;
 
   const names = hits.map(h => h._source.component_name);
@@ -31,15 +26,17 @@ const parse = async bodyString => {
   //   // dit kan je doen door een vergelijking tussen de parameter x_forwarded_for (nadat je de lijst splitst) en   https://github.com/sindresorhus/public-ip
   //  return rawLog._source.layer === "[CF.RTR]" ;
   // });
-  let filteredLogs = hits.filter((rawLog)=>rawLog._source.layer === "[CF.RTR]")
+  let filteredLogs = hits.filter(
+    rawLog =>
+      rawLog._source.layer === "[CF.RTR]" &&
+      rawLog._source.user_agent !== "axios/0.19.2"
+  );
   let logs = filteredLogs.map(rawLog => {
-    // enkel logs gegeneerd door de applicatie zelf opnemen
+    // enkel logs gegeneerd door de Cloud Foundry Router opnemen
     const log = logModel(rawLog);
-    // skip the http requests die vanuit de client met het ip adres van de monitoring tool werden gemaakt (enkel wanneer de applicatie live gaat)
-    // return log.referer_ip_adress === ip4 ? null : log;
     return log;
   });
-  // console.log(logs);
+  console.log(logs);
 
   return logs;
 };

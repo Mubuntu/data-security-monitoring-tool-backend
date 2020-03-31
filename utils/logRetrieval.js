@@ -1,19 +1,18 @@
 const rp = require("request-promise");
 const fs = require("fs").promises;
 const moment = require("moment");
-const retrieveCookie = require("./scrapeAuthCookie");
+const retrieveCookie = require("./authCookieScraper");
 const logParser = require("./logParser");
-const simulate = require("./simulateRequests");
-const db = require("../data/database");
+const simulate = require("./requestsSimulator");
+const db = require("../db/database");
 const retrieveLogs = async (from, to) => {
+
   // return new Promise(async (resolve, reject) => {
-  if (from) {
-    from = moment()
-      .subtract(7, "days")
-      .toISOString();
+  if (!from) {
+    from = moment().subtract(7, "days");
   }
-  if (to) {
-    to = moment().toISOString();
+  if (!to) {
+    to = moment();
   }
   // ==========request payload =================================-
   const rawPayload = [
@@ -122,8 +121,8 @@ const retrieveLogs = async (from, to) => {
               range: {
                 "@timestamp": {
                   format: "strict_date_optional_time",
-                  gte: from,
-                  lte: to
+                  gte: from.utcOffset(0).toISOString(),
+                  lte: to.utcOffset(0).toISOString()
                 }
               }
             }
@@ -169,90 +168,15 @@ const retrieveLogs = async (from, to) => {
 
         //======================== PARSE individual logs and retrieve necessary components ==========================================
         const bodyString = response.body;
-        // iin bulkcreateLog then
-        // simulate(newLogs)
-        // .then(async logsWithSimulatedRequests => {
-        //   // schrijf weg naar db
-        //   await db.bulkUpdateLogs(logsWithSimulatedRequests);
-        // })
-        // .catch(err => console.log(err));
         const logs = await logParser(bodyString);
         await db.bulkCreateLog(logs);
+        // callback voor readLogs
         const returnVariables = logs => {
-          simulate(logs)
+          simulate(logs);
         };
-        db.readLogs(moment(from, "YYYY-MM-DDTHH:mm:ss").toDate(), moment(to, "YYYY-MM-DDTHH:mm:ss").toDate(),returnVariables )
-        // fs.writeFile("./data/logsDB.json", JSON.stringify(logs)).then(err => {
-        //   if (err) {
-        //     throw err;
-        //   }
-        // }).catch(err=> console.log(err));
-
-        // resolve(logs);
-        //===========================================================================================================================
-        // ophalen van bestaande logs:
-        fs.readFile("./data/logsDB.json", "utf-8")
-          .then(data => {
-            let existingLogs = JSON.parse(data);
-            let appGrootte = [];
-            if (existingLogs.length > 0) {
-              appGrootte = existingLogs.map(app => {
-                return {
-                  name: app.name,
-                  length: app.logs.length
-                };
-              });
-            }
-
-            //voeg nieuwe logs toe
-            existingLogs.push(logs);
-            let newAppLength = existingLogs.map(app => {
-              return {
-                name: app.name,
-                length: app.logs.length
-              };
-            });
-            // show total inserted logs
-            let difference = newAppLength.map(app, i => {
-              return {
-                name: app.name,
-                length: app.length - newAppLength[i].length
-              };
-            });
-
-            difference.array.forEach(app => {
-              console.log(`${app.name}: ${app.length} inserted`);
-            });
-            fs.writeFile(
-              "./data/logsDB.json",
-              JSON.stringify(existingLogs),
-              "utf-8"
-            ).then(err => {
-              if (err) throw err;
-              console.log("nieuwe gegevens succesvol weggeschreven naar db.");
-            });
-          })
-          .catch(console.log);
-
-        //===========================================================================================================================
-
-        // tijdelijk wegschrijven voor testing purposes
-        fs.writeFile("./tmp/responseKibana.json", JSON.stringify(response))
-          .then(() => {
-            console.log("file saved");
-          })
-          .catch(error =>
-            console.error("error bij het wegschrijven van logs", error)
-          );
-        // console.dir(bodyString.responses, { depth: null, colors: true });
-
-        fs.writeFile("./tmp/requestLogs.json", response.body)
-          .then(() => {
-            console.log("file saved");
-          })
-          .catch(error =>
-            console.error("error bij het wegschrijven van logs", error)
-          );
+       // zoek criteria: 
+      //  const start = from.subtract(2, "hour").utcOffset(0).toDate(),  end =moment().toDate() 
+        db.readLogs(from,to, returnVariables);
       })
       .catch(e => {
         if (e.StatusCodeError) {
@@ -269,18 +193,15 @@ const retrieveLogs = async (from, to) => {
     // echte catch
   } catch (e) {
     console.log(e);
-    reject(e);
     throw e;
   }
   // }); // promise
 };
 
-const from = moment()
-  .subtract("7", "days")
-  .toISOString();
-const to = moment().toISOString();
+const from = moment().subtract("45", "minutes");
+const to = moment();
 
-const data = retrieveLogs(from, to);
+// const data = retrieveLogs(from, to);
 // setTimeout(() => console.log(data), 10000);
 
 module.exports = retrieveLogs;

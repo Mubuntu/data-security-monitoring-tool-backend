@@ -7,8 +7,26 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Launch logsrouter",
+            "program": "${workspaceFolder}/routes/logRouter.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch odata Server",
+            "program": "${workspaceFolder}/odata/dataserver.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Launch requestSimulation",
-            "program": "${workspaceFolder}/utils/simulateRequests.js",
+            "program": "${workspaceFolder}/utils/requestSimulator.js",
             "skipFiles": [
                 "<node_internals>/**"
             ]
@@ -17,7 +35,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch logRetrieval",
-            "program": "${workspaceFolder}/utils/retrieveLogs.js",
+            "program": "${workspaceFolder}/utils/logRetrieval.js",
             "skipFiles": [
                 "<node_internals>/**"
             ]
@@ -26,7 +44,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch  databaseConfig",
-            "program": "${workspaceFolder}/data/database.js",
+            "program": "${workspaceFolder}/db/database.js",
             "skipFiles": [
                 "<node_internals>/**"
             ]
