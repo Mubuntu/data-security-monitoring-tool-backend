@@ -10,11 +10,10 @@ const app = express();
 const jobs = require("./cron/jobs");
 
 // set environment variables:
-// require("dotenv").config({ path: __dirname + "/data/.env" });
 require("dotenv").config();
-console.log("username: ", process.env["USER"]);
+// console.log("username: ", process.env["cf_user"]);
 //check of waarden zijn opgehaald:
-if (!process.env["USER"] && !process.env["PASSWORD"]) {
+if (!process.env["cf_user"] && !process.env["cf_password"]) {
   throw new Error("application does not contain environment variables");
 }
 
@@ -61,6 +60,7 @@ app.use(function(err, req, res, next) {
 const debug = require("debug")("data-security-monitoring-tool-backend");
 app.set("port", process.env.PORT || 4000);
 const server = app.listen(app.get("port"), function() {
+  console.log("Express server listening on port " + server.address().port);
   debug("Express server listening on port " + server.address().port);
 });
 

@@ -1,16 +1,9 @@
 "use strict";
 const _ = require("lodash");
 const axios = require("axios");
-const DataStore = require("nedb");
 // Persistent datastore with automatic loading
-const logsdb = new DataStore({
-  filename: "./db/test.logsdb",
-  autoload: true,
-  timestampData: true,
-  corruptAlertThreshold: 1
-});
 
-const db = require("../db/database");
+const db = require("../db/dbPromises");
 
 // interceptor die alle responses waarvan de status niet 2xx is toch resolved
 const interceptor = axios.interceptors.response.use(
@@ -119,12 +112,13 @@ const simulate = async logs => {
             endpoint.ids.includes(log._id)
           );
           // vind de gesimuleerde request die deze logs matcht
-          console.log(endpoint)
+          console.log(endpoint);
           let simulatedResponse = simulatedResponses.find(
             res =>
-              res.url === endpoint.endpoint &&
-              res.method === endpoint.method.toLowerCase()
+              res.url.toLowerCase() === endpoint.endpoint.toLowerCase() &&
+              res.method.toLowerCase() === endpoint.method.toLowerCase()
           );
+          // console.log(simulatedResponse);
           // voeg de gesimuleerde request toe aan logs
           let logsWithSimulatedResponses = logsToBeChanged.map(log => {
             return {
@@ -137,8 +131,8 @@ const simulate = async logs => {
           changedLogs.push.apply(changedLogs, logsWithSimulatedResponses);
           // console.log(changedLogs)
         }
-        console.log("originele logs: \n", rLogs);
-        console.log("updated logs: \n", changedLogs);
+        // console.log("originele logs: \n", rLogs);
+        // console.log("updated logs: \n", changedLogs);
 
         db.bulkUpdateLogs(changedLogs);
         // --------------------------------------------------------------------------------------
@@ -153,15 +147,13 @@ const simulate = async logs => {
 // test data
 
 // testen van simulaties met test data:
-// const moment = require('moment')
-// const from = moment()
-//   .subtract("7", "days").toDate()
-//   ;
-// const to = moment().toDate();
-// const callback = (logs)=>{
-//   console.log(logs)
-//   simulate(logs)
-// }
-// db.readLogs(from, to, callback)
+const moment = require("moment");
+const from = moment().subtract("7", "days");
+const to = moment();
+const callback = logs => {
+  console.log(logs);
+  simulate(logs);
+};
+// db.readLogs(from, to).then(logs => callback(logs));
 // simulate(logs);
 module.exports = simulate;

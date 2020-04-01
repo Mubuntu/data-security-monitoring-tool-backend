@@ -26,7 +26,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch requestSimulation",
-            "program": "${workspaceFolder}/utils/requestSimulator.js",
+            "program": "${workspaceFolder}/utils/requestsSimulator.js",
             "skipFiles": [
                 "<node_internals>/**"
             ]
@@ -44,7 +44,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch  databaseConfig",
-            "program": "${workspaceFolder}/db/database.js",
+            "program": "${workspaceFolder}/db/dbPromises.js",
             "skipFiles": [
                 "<node_internals>/**"
             ]
@@ -65,7 +65,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\bin\\www"
+            "program": "${workspaceFolder}/app.js"
         }
     ]
 }

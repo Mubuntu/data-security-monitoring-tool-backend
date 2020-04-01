@@ -1,18 +1,17 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs").promises;
-const cookiePath = "./db/cookies.json";
-const moment = require("moment");
-const clipboardy = require("clipboardy");
-const rp = require("request-promise");
-const tough = require("tough-cookie");
-const Cookie = tough.Cookie;
-const username = "patrick.frison@amista.be";
-const password = "N6Dq5*E$tvkz";
+const cookiePath = "./tmp/sap-cloud-cookie.json";
+const username = process.env["cf_user"] || "patrick.frison@amista.be";
+const password = process.env["cf_password"] || "N6Dq5*E$tvkz";
 
 const retrieveCookie = () => {
   return new Promise(async (resolve, reject) => {
     try {
       const browser = await puppeteer.launch({
+        // In order to protect the host environment from untrusted web content, Chrome uses multiple layers of sandboxing. 
+        // For this to work properly, the host should be configured first. If there's no good sandbox for Chrome to use, it will crash with the error
+        // https://github.com/puppeteer/puppeteer/blob/master/docs/troubleshooting.md#setting-up-chrome-linux-sandbox
+        args: ["--no-sandbox", "--disable-setuid-sandbox"],
         headless: true
         // args: ["--start-fullscreen"]
       });
@@ -31,7 +30,7 @@ const retrieveCookie = () => {
 
       cookies.forEach(c => (c.url = "https://logs.cf.eu10.hana.ondemand.com/"));
       //   console.log(cookies)
-      await fs.writeFile(cookiePath, JSON.stringify(cookies, null, 2));
+      fs.writeFile(cookiePath, JSON.stringify(cookies, null, 2));
 
       const authCookie = cookies.find(c => c.name.includes("goauth-goauth-1"));
       await page.close();

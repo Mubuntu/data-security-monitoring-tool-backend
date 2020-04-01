@@ -64,14 +64,14 @@ const checkURI = str => {
 const convertToLocalTime = str => {
   let utcDate = moment.utc(str, "YYYY-MM-DDTHH:mm:ss");
   let lokaleTijd = moment(utcDate, "YYYY-MM-DDTHH:mm:ss").local();
-  console.log(lokaleTijd.toDate())
+  // console.log(lokaleTijd.toDate())
   return lokaleTijd.toDate();
 };
 let date = "2020-3-31T07:17:18";
 //utc
-let utcDate = moment.utc(date, "YYYY-MM-DDTHH:mm:ss");
-console.log("utc", utcDate.toISOString());
+// let utcDate = moment.utc(date, "YYYY-MM-DDTHH:mm:ss");
+// console.log("utc", utcDate.toISOString());
 //converting to local date
-var local = moment(utcDate, "YYYY-MM-DDTHH:mm:ss").local(); //.format('YYYY-MM-DDTHH:mm:ss');
-console.log("lokale tijd", local.toDate());
+// var local = moment(utcDate, "YYYY-MM-DDTHH:mm:ss").local(); //.format('YYYY-MM-DDTHH:mm:ss');
+// console.log("lokale tijd", local.toDate());
 module.exports = logModel;

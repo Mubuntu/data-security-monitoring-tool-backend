@@ -4,9 +4,8 @@ const moment = require("moment");
 const retrieveCookie = require("./authCookieScraper");
 const logParser = require("./logParser");
 const simulate = require("./requestsSimulator");
-const db = require("../db/database");
+const db = require("../db/dbPromises");
 const retrieveLogs = async (from, to) => {
-
   // return new Promise(async (resolve, reject) => {
   if (!from) {
     from = moment().subtract(7, "days");
@@ -169,14 +168,14 @@ const retrieveLogs = async (from, to) => {
         //======================== PARSE individual logs and retrieve necessary components ==========================================
         const bodyString = response.body;
         const logs = await logParser(bodyString);
-        await db.bulkCreateLog(logs);
+        await db.bulkCreateLogs(logs).catch(console.log);
         // callback voor readLogs
         const returnVariables = logs => {
           simulate(logs);
         };
-       // zoek criteria: 
-      //  const start = from.subtract(2, "hour").utcOffset(0).toDate(),  end =moment().toDate() 
-        db.readLogs(from,to, returnVariables);
+        // zoek criteria:
+        //  const start = from.subtract(2, "hour").utcOffset(0).toDate(),  end =moment().toDate()
+        db.readLogs(from, to, returnVariables);
       })
       .catch(e => {
         if (e.StatusCodeError) {
@@ -185,12 +184,11 @@ const retrieveLogs = async (from, to) => {
           );
         }
         console.log(e);
+        throw e;
         // reason.response is the transformed response
       });
 
     // console.log("data from request: \n\n",response)
-
-    // echte catch
   } catch (e) {
     console.log(e);
     throw e;

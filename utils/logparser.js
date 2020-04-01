@@ -36,7 +36,7 @@ const parse = async bodyString => {
     const log = logModel(rawLog);
     return log;
   });
-  console.log(logs);
+  // console.log(logs);
 
   return logs;
 };

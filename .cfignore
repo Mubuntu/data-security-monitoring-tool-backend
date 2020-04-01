@@ -1,0 +1,30 @@
+.DS_STORE
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.json
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+db/logsdb.ndjson
+# Ignore coverage
+/coverage
+
+# Tag file
+tags
+.idea/
+
+.swo
+.swp
+
+.envrc
+
+cscope*
+
+doc/*
+
+.jira-url
+
+vendor/*

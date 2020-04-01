@@ -3,18 +3,20 @@ const DataStore = require("nedb");
 const moment = require("moment");
 // Persistent datastore with automatic loading
 const logsDB = new DataStore({
-  filename: "./db/test.ndjson",
+  filename: "./db/logsdb.ndjson",
   autoload: true,
   timestampData: true,
   corruptAlertThreshold: 1
 });
-const logModel = require("./model/logModel");
 
 // https://github.com/louischatriot/nelogsDB#inserting-documents
 // load logsDB
 
 logsDB.loadDatabase();
-
+/**
+ * @deprecated heel het bestand eigenlijk
+ * @param {} logsArray 
+ */
 // zelf bestand compacten?: https://github.com/louischatriot/nelogsDB#persistence
 const bulkCreateLogs = logsArray => {
   return new Promise((resolve, reject) => {

@@ -1,7 +1,7 @@
 const CronJob = require("cron").CronJob;
 const logRetrieval = require("../utils/logRetrieval");
-const { removeExpiredLogs } = require("../db/database");
-const moment = require('moment')
+const db = require("../db/database");
+const moment = require("moment");
 const minutes = 15;
 const logRetievalJob = new CronJob(
   // "35 15 * * *",
@@ -12,9 +12,9 @@ const logRetievalJob = new CronJob(
     const to = moment();
     console.log(
       "retrieving logs between ",
-      from.toDate(),
+      from.toISOString(),
       " and ",
-      to.toDate()
+      to.toISOString()
     );
     await logRetrieval(from, to);
     console.log("ending job: log retrieval from Kibana");
@@ -26,14 +26,15 @@ const logRetievalJob = new CronJob(
   true,
   "Europe/Brussels"
 );
-
+const hours = 24;
 const logRemoval = new CronJob(
-  `0 */24 * * *`, // elke 24 uur
+  // `*/1 * * * *`, // elke minuut
+  `0 */${hours} * * *`, // elke 24 uur
   async () => {
     console.log("commencing job: log removal job");
     const expirationDate = moment().subtract(30, "days");
     console.log("checking for expired logs", expirationDate.toDate());
-    await removeExpiredLogs(expirationDate);
+    await db.removeExpiredLogs(expirationDate);
     console.log("ending job: log removal job");
   },
   () => {
@@ -44,7 +45,9 @@ const logRemoval = new CronJob(
   "Europe/Brussels"
 );
 const start = () => {
+  console.log(`application will search for new logs every ${minutes} minutes.`);
   logRetievalJob.start();
+  console.log(`application will check for expired logs every ${hours} hours.`)
   logRemoval.start();
 };
 

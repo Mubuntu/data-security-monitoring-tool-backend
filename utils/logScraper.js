@@ -9,7 +9,10 @@ const scrapeLogs = (from = fromDefault, to = toDefault) => {
       const fromDateString = moment(from).format("YYYY-MM-DD HH:mm:ss.SSS");
       const toDateString = moment(to).format("YYYY-MM-DD HH:mm:ss.SSS");
       const browser = await puppeteer.launch({
-        args: ["--start-fullscreen"],
+         // In order to protect the host environment from untrusted web content, Chrome uses multiple layers of sandboxing. 
+        // For this to work properly, the host should be configured first. If there's no good sandbox for Chrome to use, it will crash with the error
+        // https://github.com/puppeteer/puppeteer/blob/master/docs/troubleshooting.md#setting-up-chrome-linux-sandbox
+        args: ["--no-sandbox", "--disable-setuid-sandbox"],
         defaultViewport: null,
         headless: false
       });
