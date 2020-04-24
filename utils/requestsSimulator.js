@@ -79,7 +79,7 @@ const simulate = async logs => {
         )
         .map(l => l._id);
       endpoints[i].ids = ids;
-      console.log(ids);
+      // console.log(ids);
     }
     // console.log(endpoints);
 
@@ -93,12 +93,17 @@ const simulate = async logs => {
         // endpoints.foreach( log.url === values.config.url)... bekijk prikbord voor img
         let simulatedResponses = [];
         values.forEach(res => {
+          let secured = false; 
+          if(parseInt(res.status)>=400){
+              secured = true
+          }
           let response = {
             status: res.status,
             statusText: res.statusText,
             url: res.config.url,
             method: res.config.method,
-            headers: res.headers
+            headers: res.headers, 
+            secured: secured
             // data: res.data
           };
           simulatedResponses.push(response);
@@ -112,7 +117,7 @@ const simulate = async logs => {
             endpoint.ids.includes(log._id)
           );
           // vind de gesimuleerde request die deze logs matcht
-          console.log(endpoint);
+          // console.log(endpoint);
           let simulatedResponse = simulatedResponses.find(
             res =>
               res.url.toLowerCase() === endpoint.endpoint.toLowerCase() &&
@@ -135,6 +140,7 @@ const simulate = async logs => {
         // console.log("updated logs: \n", changedLogs);
 
         db.bulkUpdateLogs(changedLogs);
+        
         // --------------------------------------------------------------------------------------
 
         resolve(changedLogs);

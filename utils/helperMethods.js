@@ -1,5 +1,5 @@
-const dataPath= './db/logsDB.json'
-const fs = require('fs')
+const dataPath = "./db/logsDB.json";
+const fs = require("fs");
 // helper methods
 const readFile = (
   callback,
@@ -12,7 +12,7 @@ const readFile = (
       console.log("error bij het lezen van bestand", err);
       throw err;
     }
-
+    data === "" ? (data = {}) : data;
     callback(returnJson ? JSON.parse(data) : data);
   });
 };
@@ -23,17 +23,17 @@ const writeFile = (
   filePath = dataPath,
   encoding = "utf8"
 ) => {
-  fs.writeFile(filePath, fileData, encoding, err => {
+  fs.writeFile(filePath, fileData, encoding, (err) => {
     if (err) {
       console.log("File read failed", err);
       throw err;
     }
-
+    // console.log("logs weggeschreven naar bestand");
     callback();
   });
 };
 
 module.exports = {
   readFile,
-  writeFile
+  writeFile,
 };

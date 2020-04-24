@@ -9,6 +9,7 @@ const app = express();
 
 const jobs = require("./cron/jobs");
 
+const {initialiseDB} = require('./db/dbPromises')
 // set environment variables:
 require("dotenv").config();
 // console.log("username: ", process.env["cf_user"]);
@@ -30,6 +31,8 @@ app.use(express.static(path.join(__dirname, "public")));
 // start cronjobs
 jobs.start();
 app.use("/", indexRouter);
+
+// initialiseDB()
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

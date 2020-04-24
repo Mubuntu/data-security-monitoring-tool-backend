@@ -1,0 +1,2149 @@
+[
+  {
+    "_id": "-F2noXEBST8Hk5GBg3qG",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:30:34.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "-maBp3EBST8Hk5GBQ5e1",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:36.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "-nrwo3EBiz2sdchAAi3R",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T22:08:54.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "0l2noXEBST8Hk5GBWWCY",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:30:29.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "0maBp3EBST8Hk5GBXKMr",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:37.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "0oOnoXEBiz2sdchAlkX3",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:30:39.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "1rXNonEBT5_uN3xKWAX0",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T16:51:33.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "2MHNonEBfq_xancIZinp",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T16:51:34.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "2gZDnHEBST8Hk5GBnPgo",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com",
+    "path": "/favicon.ico",
+    "endpoint": "https://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com/favicon.ico",
+    "method": "GET",
+    "response_status": 404,
+    "organization_name": "s0021506423trial",
+    "space_name": "dev",
+    "logging_service_name": "express-app-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.73.234:61036",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0",
+    "request_received_at": "2020-04-21T10:23:13.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 404,
+      "statusText": "Not Found",
+      "url": "https://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com/favicon.ico",
+      "method": "get",
+      "headers": {
+        "content-length": "150",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "set-cookie": [
+          "connect.sid=s%3A0aGy-NcSUSUcftFUDatXzmjmv0WZft81.SnTcZFEgOewF%2FTHxNodqtQnDwZFPckPwQZByTe5g%2F0I; Path=/; HttpOnly"
+        ],
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d53c84e1-b82e-47cf-55cd-e82eec23df84",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "42aBp3EBST8Hk5GBJIEB",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:25.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "4IKmoXEBiz2sdchAyh7E",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:29:49.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "7V2noXEBST8Hk5GBkIZN",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:30:34.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "8uFlq3EBST8Hk5GBIOTQ",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-24T08:54:18.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "9ZqmonEBT5_uN3xK9HSH",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T16:09:40.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "AgZDnHEBST8Hk5GBld2g",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com",
+    "path": "/",
+    "endpoint": "https://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com/",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "s0021506423trial",
+    "space_name": "dev",
+    "logging_service_name": "express-app-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.73.234:61036",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0",
+    "request_received_at": "2020-04-21T10:23:13.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-thankful-serval-vn.cfapps.eu10.hana.ondemand.com/",
+      "method": "get",
+      "headers": {
+        "content-length": "63",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"3f-bnSaD3kJz0Mtpqx4QZrB8pnglx4\"",
+        "set-cookie": [
+          "connect.sid=s%3A-Cv45bpq7lNhQ5EEXNCTq3etLPCckGUJ.Bg15CDieEqn7%2FOOqlVRnbjzn9%2FFF%2BXNnaHbnPNSTxLE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "9e8699bf-394f-4b65-409a-be0dcf36d928",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "AmaAp3EBST8Hk5GB8Wq8",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:14.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "CPyBp3EBiz2sdchAMZGk",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:26.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "CoOnoXEBiz2sdchAcAo1",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:30:28.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "F1ymoXEBST8Hk5GB1PhX",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:29:50.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "FcNlq3EBiz2sdchAGqc_",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-24T08:54:18.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "H12noXEBST8Hk5GBaWws",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:30:29.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "H4KmoXEBiz2sdchAzCN5",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:29:50.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "Inrwo3EBiz2sdchAInVw",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T22:09:07.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "MLZMo3EBiz2sdchAiv2P",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T19:10:29.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "OeunonEBiz2sdchAIYb6",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T16:09:39.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "PIOnoXEBiz2sdchAgh6d",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:30:33.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "PWaAp3EBST8Hk5GByE5T",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:02.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "Q8Pwo3EBST8Hk5GBJaWi",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T22:09:08.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "QYumoXEB7F7Ea1pQ0ga1",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:29:49.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "QnVlq3EBfq_xancIN_ro",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-24T08:54:18.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "Rl2noXEBST8Hk5GBg3uG",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:30:38.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "SGaBp3EBST8Hk5GBD3XM",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:14.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "SWaBp3EBST8Hk5GBD3XM",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:14.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "SmaBp3EBST8Hk5GBD3XM",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:14.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "U1yAp3EB7F7Ea1pQzO9s",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:02.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "XoKnoXEBiz2sdchAZu_w",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:30:29.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "ZpqmonEBT5_uN3xK8nHc",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T16:09:39.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "b8Pvo3EBST8Hk5GB1FNj",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T22:08:54.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "bEFMo3EBrDN6QePppFxV",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T19:10:29.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "efyBp3EBiz2sdchASKbq",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:37.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "esPvo3EBST8Hk5GB7Wuu",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T22:08:54.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "fFyAp3EB7F7Ea1pQzO9s",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:02.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "fV2Bp3EB7F7Ea1pQOSUZ",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:26.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "hnrwo3EBiz2sdchAQLd8",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T22:09:08.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "icPvo3EBST8Hk5GB2V1j",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T22:08:53.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "irZMo3EBiz2sdchAivyP",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T19:10:29.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "kIZlq3EBrDN6QePpLhhS",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-24T08:54:18.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "koOnoXEBiz2sdchAlkX2",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:30:38.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "mWaAp3EBST8Hk5GB4Vvh",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:02.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "nE7wo3EB7F7Ea1pQJpxU",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T22:09:07.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "onOnonEBST8Hk5GBBHXn",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T16:09:39.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "tl2noXEBST8Hk5GBdHPj",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:30:33.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "uMdMo3EBoLt9u9dwgggs",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T19:10:29.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "vvyBp3EBiz2sdchAMZCj",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:25.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users",
+      "method": "get",
+      "headers": {
+        "content-length": "780",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"30c-kMwshdP43OKpmUsx8OqbMc/3CHI\"",
+        "set-cookie": [
+          "connect.sid=s%3ARxclnaEQREBzx-OvQ60gc0d1wCt-sza4.OPH2fBVRbD%2BAZOlOpQ%2BN8bJd8OEEwqIG%2Fd0vDEiw0tE; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "ed58896b-ae1a-41b3-5a68-b6129a86a93e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "xLXNonEBT5_uN3xKUwTt",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/login?username=PatrickFrison&password=test123",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=PatrickFrison&password=test123",
+    "method": "POST",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T16:51:34.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 200,
+      "statusText": "OK",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/login?username=patrickfrison&password=test123",
+      "method": "post",
+      "headers": {
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"25-zWzulgM2LL54Et1AcwcEOiBUJWU\"",
+        "set-cookie": [
+          "connect.sid=s%3A7qx1lg9_UQsr2R6OlQKnAt4msdw89fWb.sXr%2FIMbygrmkDEDoITfOfA0kXJdqJywV%2FKis8tmj708; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "d00ebacb-6392-413d-52cc-d7a7606a09de",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": false
+    }
+  },
+  {
+    "_id": "yF2noXEBST8Hk5GBlopC",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T11:30:38.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "zGaBp3EBST8Hk5GBXKMr",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 401,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.60:61012",
+    "user_agent": "-",
+    "request_received_at": "2020-04-23T14:46:37.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  },
+  {
+    "_id": "zrXNonEBT5_uN3xKWAX0",
+    "application_name": "express-demo-app",
+    "domain": "express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com",
+    "path": "/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "endpoint": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+    "method": "GET",
+    "response_status": 200,
+    "organization_name": "AmistaDEV",
+    "space_name": "dev",
+    "logging_service_name": "express-demo-logs",
+    "service_name": "application-logs",
+    "dest_ip_and_port": "10.0.137.252:61040",
+    "user_agent": "-",
+    "request_received_at": "2020-04-22T16:51:33.000Z",
+    "simulated": true,
+    "simulatedResponse": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "url": "https://express-demo-app-relaxed-wolf-mx.cfapps.eu10.hana.ondemand.com/users/e6b84063-2ecd-4f0f-bcb4-11dc3e52c87d",
+      "method": "get",
+      "headers": {
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Fri, 24 Apr 2020 08:55:35 GMT",
+        "etag": "W/\"28-Zrw+wMSoMQGiF7Aol2Ru8JHddLs\"",
+        "set-cookie": [
+          "connect.sid=s%3AgpPmdD4ODM8h6enlOz2_7rKy_q9tgh5x.2l2Qa67iwUCoEzJ%2Fj%2FdRXvTnx9KO3WJ8tkGVPgIUYx8; Path=/; HttpOnly"
+        ],
+        "x-powered-by": "Express",
+        "x-vcap-request-id": "687518db-7cd7-4304-4f7a-e4f99afcbe6e",
+        "connection": "close",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload;"
+      },
+      "secured": true
+    }
+  }
+]

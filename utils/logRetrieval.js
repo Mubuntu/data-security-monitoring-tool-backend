@@ -170,12 +170,15 @@ const retrieveLogs = async (from, to) => {
         const logs = await logParser(bodyString);
         await db.bulkCreateLogs(logs).catch(console.log);
         // callback voor readLogs
-        const returnVariables = logs => {
-          simulate(logs);
-        };
+        // const returnVariables = logs => {
+        //   simulate(logs);
+        // };
         // zoek criteria:
         //  const start = from.subtract(2, "hour").utcOffset(0).toDate(),  end =moment().toDate()
-        db.readLogs(from, to, returnVariables);
+        db.readLogs(from, to).then((logs)=>{
+           simulate(logs)
+         
+        });
       })
       .catch(e => {
         if (e.StatusCodeError) {
@@ -196,10 +199,10 @@ const retrieveLogs = async (from, to) => {
   // }); // promise
 };
 
-const from = moment().subtract("45", "minutes");
+const from = moment().subtract("30", "day");
 const to = moment();
 
-// const data = retrieveLogs(from, to);
+// retrieveLogs(from, to);
 // setTimeout(() => console.log(data), 10000);
 
 module.exports = retrieveLogs;

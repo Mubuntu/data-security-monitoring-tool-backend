@@ -8,21 +8,35 @@ const dateFormat = "YYYY-MM-DDTHH:mm:ss";
 router.get("/logs", async (req, res, next) => {
   let start = req.query.start || null,
     end = req.query.end || null,
-    skip = parseInt(req.query.skip) || 0,
-    limit = parseInt(req.query.limit) || 0,
-    application = req.query.application || null;
+    skip = parseInt(req.query.skip) || null,
+    limit = parseInt(req.query.limit) || null,
+    application = req.query.application || null,
+    response = null;
+  switch (req.query.response) {
+    case "true":
+      response = true;
+      break;
+    case "false":
+      response = false;
+      break;
+    default:
+      response = null;
+  }
+
+  
+  await dataStore.db.count().then((c) => console.log("totaal aantal logs: ", c));
 
   // datum komt binnen als string in het formaat DD-MM-YYYYTHH:mm
   // ====================================================================================================
   // console.log(req.query.start);
-  if (start || start) {
+  if (start || end) {
     const isvalidStartDate = moment(req.query.start, dateFormat).isValid();
     const isvalidendDate = moment(req.query.end, dateFormat).isValid();
     if (!isvalidStartDate) {
       const msg = {
         message: " start date is not valid ",
         start: start,
-        status: 400
+        status: 400,
       };
       return res.status(400).json(msg);
     }
@@ -33,13 +47,13 @@ router.get("/logs", async (req, res, next) => {
             ? "end date has not been included"
             : " end date is not valid ",
         start: end,
-        status: 400
+        status: 400,
       };
       return res.status(400).json(msg);
     }
     start = moment(req.query.start, dateFormat);
     end = moment(req.query.end, dateFormat);
-    
+
     if (application) {
       if (application) {
         try {
@@ -48,7 +62,8 @@ router.get("/logs", async (req, res, next) => {
             end,
             application,
             skip,
-            limit
+            limit,
+            response
           );
           return res.status(200).json({ total: logs.length, logs });
         } catch (e) {
@@ -58,13 +73,9 @@ router.get("/logs", async (req, res, next) => {
     }
     // vraag logs op binnen een periode
     try {
-      const logs = await dataStore.readLogs(
-        start,
-        end,
-        parseInt(skip),
-        parseInt(limit)
-      );
-      return res.status(200).json({ total: logs.length, logs: logs });
+      const logs = await dataStore.readLogs(start, end, skip, limit, response);
+      if (logs.length > 0)
+        return res.status(200).json({ total: logs.length, logs: logs });
     } catch (e) {
       console.log(e);
       throw e;
@@ -72,7 +83,8 @@ router.get("/logs", async (req, res, next) => {
   }
 
   // zoek enkel de logs in de laatste 24h indien start, end niet mee worden gegeven:
-  (start = moment().subtract(24, "hours")), (end = moment());
+  start = moment().subtract(1, "days"), end = moment();
+  console.log(`looking for logs between date range of: `)
   if (application) {
     try {
       let logs = await dataStore.readApplicationLogs(
@@ -80,14 +92,16 @@ router.get("/logs", async (req, res, next) => {
         end,
         application,
         skip,
-        limit
+        limit,
+        response
       );
       return res.status(200).json({ total: logs.length, logs });
     } catch (e) {
       throw err;
     }
   }
-  const logs = await dataStore.readLogs(start, end);
+  ///// debuggen ! 
+  const logs = await dataStore.readLogs(start, end, limit, skip, response);
   return res.status(200).json({ total: logs.length, logs: logs });
 });
 
@@ -102,7 +116,7 @@ router.get("/logs/:count", async (req, res, next) => {
       const msg = {
         message: " start date is not valid ",
         start: start,
-        status: 400
+        status: 400,
       };
       return res.status(400).json(msg);
     }
@@ -113,7 +127,7 @@ router.get("/logs/:count", async (req, res, next) => {
             ? "end date has not been included"
             : " end date is not valid ",
         start: end,
-        status: 400
+        status: 400,
       };
       return res.status(400).json(msg);
     }

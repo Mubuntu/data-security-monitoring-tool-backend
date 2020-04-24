@@ -1,8 +1,20 @@
 const CronJob = require("cron").CronJob;
 const logRetrieval = require("../utils/logRetrieval");
-const db = require("../db/database");
+const db = require("../db/dbPromises");
 const moment = require("moment");
-const minutes = 15;
+const minutes = 5;
+
+// const updateDbJob = new CronJob(
+//   `*/${5} * * * *`,
+//   async () => {
+//     console.log("logs will be stored to file")
+//    await db.updateDB();
+//   },
+//   null,
+//   true,
+//   "Europe/Brussels"
+// );
+
 const logRetievalJob = new CronJob(
   // "35 15 * * *",
   `*/${minutes} * * * *`,
@@ -47,10 +59,11 @@ const logRemoval = new CronJob(
 const start = () => {
   console.log(`application will search for new logs every ${minutes} minutes.`);
   logRetievalJob.start();
-  console.log(`application will check for expired logs every ${hours} hours.`)
+  console.log(`application will check for expired logs every ${hours} hours.`);
   logRemoval.start();
+  // updateDbJob.start();
 };
 
 module.exports = {
-  start: start
+  start: start,
 };
