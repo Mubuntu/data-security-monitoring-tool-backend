@@ -3,7 +3,9 @@ const express = require("express");
 const router = express.Router();
 const dataStore = require("../db/dbPromises");
 const moment = require("moment");
-
+router.get('/', (req, res)=>{
+  res.status(200).json({message: "welcome to log API"})
+})
 const dateFormat = "YYYY-MM-DDTHH:mm:ss";
 router.get("/logs", async (req, res, next) => {
   let start = req.query.start || null,
@@ -23,8 +25,9 @@ router.get("/logs", async (req, res, next) => {
       response = null;
   }
 
-  
-  await dataStore.db.count().then((c) => console.log("totaal aantal logs: ", c));
+  // await dataStore.db
+  //   .count()
+  //   .then((c) => console.log("totaal aantal logs: ", c));
 
   // datum komt binnen als string in het formaat DD-MM-YYYYTHH:mm
   // ====================================================================================================
@@ -65,7 +68,13 @@ router.get("/logs", async (req, res, next) => {
             limit,
             response
           );
-          return res.status(200).json({ total: logs.length, logs });
+          const requestVerdeling = totalSecuredAndInsecuredRequests(logs);
+          return res.status(200).json({
+            total: logs.length,
+            logs: logs,
+            insecuredTotal: requestVerdeling.totalInsecuredRequests,
+            securedTotal: requestVerdeling.totalSecuredRequests,
+          });
         } catch (e) {
           throw err;
         }
@@ -74,8 +83,13 @@ router.get("/logs", async (req, res, next) => {
     // vraag logs op binnen een periode
     try {
       const logs = await dataStore.readLogs(start, end, skip, limit, response);
-      if (logs.length > 0)
-        return res.status(200).json({ total: logs.length, logs: logs });
+      const requestVerdeling = totalSecuredAndInsecuredRequests(logs);
+      return res.status(200).json({
+        total: logs.length,
+        logs: logs,
+        insecuredTotal: requestVerdeling.totalInsecuredRequests,
+        securedTotal: requestVerdeling.totalSecuredRequests
+      });
     } catch (e) {
       console.log(e);
       throw e;
@@ -83,8 +97,8 @@ router.get("/logs", async (req, res, next) => {
   }
 
   // zoek enkel de logs in de laatste 24h indien start, end niet mee worden gegeven:
-  start = moment().subtract(1, "days"), end = moment();
-  console.log(`looking for logs between date range of: `)
+  (start = moment().subtract(1, "days")), (end = moment());
+  console.log(`looking for logs between date range of: `);
   if (application) {
     try {
       let logs = await dataStore.readApplicationLogs(
@@ -95,14 +109,25 @@ router.get("/logs", async (req, res, next) => {
         limit,
         response
       );
-      return res.status(200).json({ total: logs.length, logs });
+      const requestVerdeling = totalSecuredAndInsecuredRequests(logs);
+      return res.status(200).json({
+        total: logs.length,
+        logs: logs,
+        insecuredTotal: requestVerdeling.totalInsecuredRequests,
+        securedTotal: requestVerdeling.totalSecuredRequests
+      });
     } catch (e) {
       throw err;
     }
   }
-  ///// debuggen ! 
   const logs = await dataStore.readLogs(start, end, limit, skip, response);
-  return res.status(200).json({ total: logs.length, logs: logs });
+  const requestVerdeling = totalSecuredAndInsecuredRequests(logs);
+  return res.status(200).json({
+    total: logs.length,
+    logs: logs,
+    insecuredTotal: requestVerdeling.totalInsecuredRequests,
+    securedTotal: requestVerdeling.totalSecuredRequests
+  });
 });
 
 router.get("/logs/:count", async (req, res, next) => {
@@ -164,4 +189,20 @@ router.get("/logs/:count", async (req, res, next) => {
 // console.log(date.toISOString());
 // console.log(date.isValid());
 
+const totalSecuredAndInsecuredRequests = (logs) => {
+  let insecuredCounter = 0;
+  let securedCounter = 0;
+  for (let i = 0; i < logs.length; i++) {
+    if (logs[i].simulatedResponse.secured) {
+      securedCounter++;
+    } else {
+      insecuredCounter++;
+    }
+  }
+  
+  return {
+    totalInsecuredRequests: insecuredCounter,
+    totalSecuredRequests: securedCounter,
+  };
+};
 module.exports = router;

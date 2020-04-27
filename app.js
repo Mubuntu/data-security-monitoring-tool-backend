@@ -9,7 +9,8 @@ const app = express();
 
 const jobs = require("./cron/jobs");
 
-const {initialiseDB} = require('./db/dbPromises')
+const moment = require("moment");
+const logRetrieval = require("./utils/logRetrieval");
 // set environment variables:
 require("dotenv").config();
 // console.log("username: ", process.env["cf_user"]);
@@ -28,6 +29,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// haal alle logs op in de laatste 30 dagen.
+const from = moment().subtract("30", "day");
+const to = moment();
+
+logRetrieval(from, to);
+
 // start cronjobs
 jobs.start();
 app.use("/", indexRouter);
@@ -35,17 +42,17 @@ app.use("/", indexRouter);
 // initialiseDB()
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
@@ -62,7 +69,7 @@ app.use(function(err, req, res, next) {
 // no need 'const app = require('../app');' any more, cause it has defined in 'app.js' already.
 const debug = require("debug")("data-security-monitoring-tool-backend");
 app.set("port", process.env.PORT || 4000);
-const server = app.listen(app.get("port"), function() {
+const server = app.listen(app.get("port"), function () {
   console.log("Express server listening on port " + server.address().port);
   debug("Express server listening on port " + server.address().port);
 });

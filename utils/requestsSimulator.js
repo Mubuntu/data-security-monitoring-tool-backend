@@ -94,9 +94,11 @@ const simulate = async logs => {
         let simulatedResponses = [];
         values.forEach(res => {
           let secured = false; 
-          if(parseInt(res.status)>=400){
+          let statusCode = parseInt(res.status)
+          if(statusCode>=400){
               secured = true
           }
+      
           let response = {
             status: res.status,
             statusText: res.statusText,
@@ -126,10 +128,11 @@ const simulate = async logs => {
           // console.log(simulatedResponse);
           // voeg de gesimuleerde request toe aan logs
           let logsWithSimulatedResponses = logsToBeChanged.map(log => {
+            
             return {
               ...log,
               simulated: true,
-              simulatedResponse: simulatedResponse
+              simulatedResponse: simulatedResponse,
             };
           });
           // merge de twee arrays (push zou gewoon een multidimensionale array vormen)
