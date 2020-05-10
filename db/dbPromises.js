@@ -1,5 +1,7 @@
 const path = require("path");
 const filePath = path.join(__dirname, "logsdb.ndjson");
+const filePathWhiteList = path.join(__dirname, "whitelistDb.ndjson");
+
 const localStorePath = path.join(__dirname, "logsdb.json");
 
 const { readFile, writeFile } = require("../utils/helperMethods");
@@ -13,9 +15,17 @@ const Datastore = require("nedb-promises");
 //   //   corruptAlertThreshold: 1,
 //   // }
 // );
-let db = new Datastore({
+let db = {};
+db.logs = new Datastore({
   inMemoryOnly: false,
   filename: filePath,
+  autoload: true,
+  timestampData: false,
+  corruptAlertThreshold: 1,
+});
+db.whitelist = new Datastore({
+  inMemoryOnly: false,
+  filename: filePathWhiteList,
   autoload: true,
   timestampData: false,
   corruptAlertThreshold: 1,
@@ -23,14 +33,14 @@ let db = new Datastore({
 // haal alle gegevens op
 // console.log(filePath);
 
-db.load();
+db.logs.load();
 // db.persistence.setAutocompactionInterval(5);
 //laad ggegevens bij initialisatie  db:
 const initialiseDB = async () => {
   try {
     readFile(
       async (data) => {
-        await db
+        await db.logs
           .insert(data)
           .then((insertedLogs) => {
             if (insertedLogs === undefined || insertedLogs.length === 0) {
@@ -38,7 +48,6 @@ const initialiseDB = async () => {
               return;
             }
             console.log(`${insertedLogs.length} logs inserted into db.`);
-            // return;
           })
           .catch(console.log);
       },
@@ -67,7 +76,7 @@ const initialiseDB = async () => {
 };
 // schrijft alle logs naar een bestand
 const updateDB = () => {
-  db.find().then((foundLogs) => {
+  db.logs.find().then((foundLogs) => {
     if (foundLogs.length > 0)
       writeFile(
         JSON.stringify(foundLogs, null, 2),
@@ -83,7 +92,7 @@ const bulkCreateLogs = async (logsArray) => {
     try {
       // zoek eerst op documenten die reeds al bestaand
       const ids = logsArray.map((log) => log._id);
-      db.find({ _id: { $in: ids } }).then((foundLogs) => {
+      db.logs.find({ _id: { $in: ids } }).then((foundLogs) => {
         // verwijder de reeds bestaande documenten uit de logsArray
         let newLogs = logsArray.filter((log) => {
           for (let doc of foundLogs) {
@@ -96,7 +105,8 @@ const bulkCreateLogs = async (logsArray) => {
         // console.log("nieuwe logs: ", newLogs);
 
         // voeg nieuwe logs aan datastore:
-        db.insert(newLogs)
+        db.logs
+          .insert(newLogs)
           .then((insertedLogs) => {
             if (insertedLogs === undefined || insertedLogs.length === 0) {
               console.log("0 logs inserted");
@@ -107,6 +117,7 @@ const bulkCreateLogs = async (logsArray) => {
             return resolve(insertedLogs);
           })
           .catch((err) => {
+            reject(err);
             throw err;
           });
       });
@@ -122,15 +133,16 @@ const bulkUpdateLogs = async (logsArray) => {
   for (let log of logsArray) {
     try {
       let promise = new Promise((resolve, reject) => {
-        db.update(
-          { _id: log._id },
-          {
-            $set: {
-              simulatedResponse: log.simulatedResponse,
-              simulated: true,
-            },
-          }
-        )
+        db.logs
+          .update(
+            { _id: log._id },
+            {
+              $set: {
+                simulatedResponse: log.simulatedResponse,
+                simulated: true,
+              },
+            }
+          )
           .then((numOfUpdates) => {
             // console.log(numOfUpdates, "rows updated");
             resolve(numOfUpdates);
@@ -153,7 +165,7 @@ const bulkUpdateLogs = async (logsArray) => {
       updateDB();
     }
   });
-  // db.persistence.compactDatafile();
+  // db.logs.persistence.compactDatafile();
 };
 const moment = require("moment");
 
@@ -176,7 +188,7 @@ const readLogs = (from, to, skip, limit, response) => {
       };
     }
     // console.log(query);
-    await db
+    await db.logs
       .find(query)
       // .sort({ request_received_at: 1 })
       // .skip(skip * limit || 0)
@@ -214,7 +226,8 @@ const readApplicationLogs = async (
         ],
       };
     }
-    db.find(query)
+    db.logs
+      .find(query)
       .sort({ request_received_at: 1 })
       .skip(skip * limit || 0)
       .limit(limit || 1000)
@@ -246,7 +259,7 @@ const countLogs = async (from, to) => {
       };
     }
     try {
-      db.count(query).then((numofLogs) => {
+      db.logs.count(query).then((numofLogs) => {
         return resolve(numofLogs);
       });
     } catch (e) {
@@ -258,21 +271,166 @@ const countLogs = async (from, to) => {
 
 const removeExpiredLogs = (expirationDate) => {
   try {
-    db.remove({
-      request_received_at: {
-        $lte: expirationDate.toDate(),
-      },
-    }).then((numOfLogsRemoved) => {
-      if (numOfLogsRemoved > 0)
-        console.log(`${numOfLogsRemoved} logs removed.`);
-      else {
-        console.log("no logs have been removed");
-      }
-    });
+    db.logs
+      .remove({
+        request_received_at: {
+          $lte: expirationDate.toDate(),
+        },
+      })
+      .then((numOfLogsRemoved) => {
+        if (numOfLogsRemoved > 0)
+          console.log(`${numOfLogsRemoved} logs removed.`);
+        else {
+          console.log("no logs have been removed");
+        }
+      });
   } catch (e) {
     throw e;
   }
 };
+
+/**
+ *  Insert a single new whitelist object
+ */
+
+const insertWhiteList = (whitelist) => {
+  return new Promise((resolve, reject) => {
+    try {
+      db.whitelist
+        .insert(whitelist)
+        .then((insertedWhitelist) => {
+          if (
+            insertedWhitelist === undefined ||
+            insertedWhitelist.length === 0
+          ) {
+            console.log("0 whitelists inserted");
+            return resolve(null);
+          }
+
+          insertedWhitelist.length > 1
+            ? console.log(`${insertedWhitelist.length} whitelists inserted.`)
+            : console.log(
+                `whitelist with id: ${insertedWhitelist._id} has been inserted.`
+              );
+          return resolve(insertedWhitelist);
+        })
+        .catch((err) => {
+          const errorType = err.errorType; 
+          if(errorType === 'uniqueViolated'){
+           return resolve(err.message); 
+          }
+          throw err;
+        });
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  });
+};
+
+/**
+ *  update a new whitelist object based on userId
+ */
+const updateWhiteList = async (whitelist) => {
+  return new Promise((resolve, reject) => {
+    try {
+      db.whitelist
+        .insert(whitelist)
+        .then((insertedWhitelist) => {
+          if (
+            insertedWhitelist === undefined ||
+            insertedWhitelist.length === 0
+          ) {
+            console.log("0 whitelists inserted");
+            return resolve(null);
+          }
+
+          insertedWhitelist.length > 1
+            ? console.log(`${insertedWhitelist.length} whitelists inserted.`)
+            : console.log(
+                `whitelist with id: ${whitelist._id} has been inserted.`
+              );
+          return resolve(insertedWhitelist);
+        })
+        .catch((err) => {
+          reject(err);
+          throw err;
+        });
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  });
+};
+
+/**
+ *  delete a  whitelist object based
+ */
+const deleteWhiteList = async (whitelist) => {
+  return new Promise((resolve, reject) => {
+    try {
+      db.whitelist
+        .insert(whitelist)
+        .then((insertedWhitelist) => {
+          if (
+            insertedWhitelist === undefined ||
+            insertedWhitelist.length === 0
+          ) {
+            console.log("0 whitelists inserted");
+            return resolve(null);
+          }
+
+          insertedWhitelist.length > 1
+            ? console.log(`${insertedWhitelist.length} whitelists inserted.`)
+            : console.log(
+                `whitelist with id: ${whitelist._id} has been inserted.`
+              );
+          return resolve(insertedWhitelist);
+        })
+        .catch((err) => {
+          throw err;
+        });
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  });
+};
+
+/**
+ *  returns whitelist list based on userId
+ */
+const bulkReadWhiteListById = async (userId) => {
+  return new Promise((resolve, reject) => {
+    try {
+      db.whitelist
+        .insert(whitelist)
+        .then((insertedWhitelist) => {
+          if (
+            insertedWhitelist === undefined ||
+            insertedWhitelist.length === 0
+          ) {
+            console.log("0 whitelists inserted");
+            return resolve(null);
+          }
+
+          insertedWhitelist.length > 1
+            ? console.log(`${insertedWhitelist.length} whitelists inserted.`)
+            : console.log(
+                `whitelist with id: ${whitelist._id} has been inserted.`
+              );
+          return resolve(insertedWhitelist);
+        })
+        .catch((err) => {
+          throw err;
+        });
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  });
+};
+
 
 const from = moment().subtract("24", "hours");
 const to = moment();
@@ -281,15 +439,28 @@ const to = moment();
 //   console.log("iets", logs.length)
 // );
 // const start = moment("2020-01-01T12:00:00", "YYYY-MM-DDTHH:mm:ss");
-const start = moment().subtract("1", "days");
+const start = moment().subtract("30", "days");
 
 const end = moment();
 
+
 // readLogs(start, end)
-//   .then((logs) => {
-//     console.log(logs);
-//   })
-//   .catch(console.log);
+// .then((logs) => {
+//   console.log(logs);
+// })
+// .catch(console.log);
+
+const list = [
+  { _id: "1T34ynEBPfFKXLS153g5",  appName: "express-demo-app", path: "/", userId: "P2002249295" },
+  { _id: "1T34ynEBPfFKXLS153g3",appName: "express-demo-app", path: "/handig", userId: "P2002249295" },
+  {_id: "1T34ynEBPfFKXLS153g9", appName: "express-dummy-app", path: "/logs", userId: "P2002249295" },
+  {_id: "1T34ynEBPfFKXLS153g8", appName: "express-demo-app", path: "/cats", userId: "P2002249295" },
+  {_id: "1T34ynEBPfFKXLS153g6", appName: "express-alt-app", path: "/dogs", userId: "P2002249295" },
+  {_id: "1T34ynEBPfFKXLS153g7", appName: "express-alt-app", path: "/vreemd", userId: "P2002249295" },
+];
+const updatedWhitelist =   { _id: "1T34ynEBPfFKXLS153g5",  appName: "express-demo-app", path: "/eenAnderPath", userId: "P2002249295" }
+
+// insertWhiteList(list[0]).then(w=> console.log(w)).catch(errorMessage=>console.log(errorMessage));
 
 module.exports = {
   updateDB: updateDB,

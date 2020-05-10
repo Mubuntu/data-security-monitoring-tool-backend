@@ -185,9 +185,25 @@ router.get("/logs/:count", async (req, res, next) => {
   //   throw err;
   // }
 });
-// const date = moment("2020-03-31T13:30:00", dateFormat);
-// console.log(date.toISOString());
-// console.log(date.isValid());
+/**
+ * 
+ */
+router.get("/whitelist/:userId", async (req, res, next) => {
+  
+});
+
+/**
+ * post a new whitelist object
+ */
+router.post("/whitelist/:userId", async (req, res, next) => {
+  
+});
+/**
+ * delete a whitelist object
+ */
+router.post("/whitelist/:userId", async (req, res, next) => {
+  
+});
 
 const totalSecuredAndInsecuredRequests = (logs) => {
   let insecuredCounter = 0;
@@ -205,4 +221,7 @@ const totalSecuredAndInsecuredRequests = (logs) => {
     totalSecuredRequests: securedCounter,
   };
 };
+// const date = moment("2020-03-31T13:30:00", dateFormat);
+// console.log(date.toISOString());
+// console.log(date.isValid());
 module.exports = router;
