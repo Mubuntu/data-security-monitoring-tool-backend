@@ -293,34 +293,49 @@ const removeExpiredLogs = (expirationDate) => {
  *  Insert a single new whitelist object
  */
 
-const insertWhiteList = (whitelist) => {
+const insertWhitelist = (whitelist) => {
   return new Promise((resolve, reject) => {
     try {
+      // eerst zoeken of whitelist alvast al bestaat. 
       db.whitelist
-        .insert(whitelist)
-        .then((insertedWhitelist) => {
-          if (
-            insertedWhitelist === undefined ||
-            insertedWhitelist.length === 0
-          ) {
-            console.log("0 whitelists inserted");
-            return resolve(null);
+      .find({ $and: [{userId: whitelist.userId }, {appName: whitelist.appName}, {path: whitelist.path}]})
+      .then((foundWhitelistings) => {
+          if(foundWhitelistings.length>0){
+              throw new Error(`whitelist object exists already.`);
+              
           }
+          db.whitelist
+          .insert(whitelist)
+          .then((insertedWhitelist) => {
+            if (
+              insertedWhitelist === undefined ||
+              insertedWhitelist.length === 0
+            ) {
+              console.log("0 whitelists inserted");
+              return resolve(null);
+            }
+  
+           console.log(
+                  `whitelist with id: ${insertedWhitelist._id} has been inserted.`
+                );
+            return resolve(insertedWhitelist);
+          })
+          .catch((err) => {
+            const errorType = err.errorType;
+            if (errorType === "uniqueViolated") {
+              return resolve(err.message);
+            }
 
-          insertedWhitelist.length > 1
-            ? console.log(`${insertedWhitelist.length} whitelists inserted.`)
-            : console.log(
-                `whitelist with id: ${insertedWhitelist._id} has been inserted.`
-              );
-          return resolve(insertedWhitelist);
-        })
-        .catch((err) => {
-          const errorType = err.errorType; 
-          if(errorType === 'uniqueViolated'){
-           return resolve(err.message); 
-          }
-          throw err;
-        });
+            throw err;
+          });
+      })
+      .catch((err) => {
+        if(err.message === "whitelist object exists already."){
+          return reject(err);
+        }
+        throw err;
+      });
+     
     } catch (e) {
       console.log(e);
       throw e;
@@ -331,27 +346,20 @@ const insertWhiteList = (whitelist) => {
 /**
  *  update a new whitelist object based on userId
  */
-const updateWhiteList = async (whitelist) => {
+const updateWhitelist = async (whitelist) => {
   return new Promise((resolve, reject) => {
     try {
       db.whitelist
-        .insert(whitelist)
-        .then((insertedWhitelist) => {
-          if (
-            insertedWhitelist === undefined ||
-            insertedWhitelist.length === 0
-          ) {
-            console.log("0 whitelists inserted");
-            return resolve(null);
-          }
-
-          insertedWhitelist.length > 1
-            ? console.log(`${insertedWhitelist.length} whitelists inserted.`)
-            : console.log(
-                `whitelist with id: ${whitelist._id} has been inserted.`
-              );
-          return resolve(insertedWhitelist);
+        .update({ _id: whitelist._id }, whitelist)
+        .then((numOfUpdates) => {
+          if (numOfUpdates == 0)
+            return reject({ message: `${numOfUpdates} rows updated.` });
+          console.log(
+            `whitelist object with id ${whitelist._id} has been updated.`
+          );
+          return resolve(numOfUpdates);
         })
+
         .catch((err) => {
           reject(err);
           throw err;
@@ -366,28 +374,24 @@ const updateWhiteList = async (whitelist) => {
 /**
  *  delete a  whitelist object based
  */
-const deleteWhiteList = async (whitelist) => {
+const deleteWhitelist = async (whitelist) => {
   return new Promise((resolve, reject) => {
     try {
       db.whitelist
-        .insert(whitelist)
-        .then((insertedWhitelist) => {
-          if (
-            insertedWhitelist === undefined ||
-            insertedWhitelist.length === 0
-          ) {
-            console.log("0 whitelists inserted");
-            return resolve(null);
+        .remove({ $and: [{userId: whitelist.userId }, {appName: whitelist.appName}, {path: whitelist.path}]})
+        .then((numOfWhitelistRemoved) => {
+          if (numOfWhitelistRemoved > 0){
+            console.log(
+              ` whitelist object ${whitelist} has been removed.`
+            );
+            return resolve(numOfWhitelistRemoved)}
+          else {
+            console.log("no whitelist object has been removed");
+            resolve(0);
           }
-
-          insertedWhitelist.length > 1
-            ? console.log(`${insertedWhitelist.length} whitelists inserted.`)
-            : console.log(
-                `whitelist with id: ${whitelist._id} has been inserted.`
-              );
-          return resolve(insertedWhitelist);
         })
         .catch((err) => {
+          reject(err);
           throw err;
         });
     } catch (e) {
@@ -400,26 +404,17 @@ const deleteWhiteList = async (whitelist) => {
 /**
  *  returns whitelist list based on userId
  */
-const bulkReadWhiteListById = async (userId) => {
+const bulkReadWhitelistByUserId = async (userId) => {
   return new Promise((resolve, reject) => {
     try {
       db.whitelist
-        .insert(whitelist)
-        .then((insertedWhitelist) => {
-          if (
-            insertedWhitelist === undefined ||
-            insertedWhitelist.length === 0
-          ) {
-            console.log("0 whitelists inserted");
-            return resolve(null);
-          }
-
-          insertedWhitelist.length > 1
-            ? console.log(`${insertedWhitelist.length} whitelists inserted.`)
-            : console.log(
-                `whitelist with id: ${whitelist._id} has been inserted.`
-              );
-          return resolve(insertedWhitelist);
+        .find({ userId: userId })
+        .then((foundWhitelistings) => {
+            if(foundWhitelistings.length>0){
+               console.log(`${foundWhitelistings.length} whitelist objects found.`)
+             return resolve(foundWhitelistings);
+            }
+            reject({message: `0 whitelisting objects found with user id ${userId}`})
         })
         .catch((err) => {
           throw err;
@@ -443,7 +438,6 @@ const start = moment().subtract("30", "days");
 
 const end = moment();
 
-
 // readLogs(start, end)
 // .then((logs) => {
 //   console.log(logs);
@@ -451,17 +445,64 @@ const end = moment();
 // .catch(console.log);
 
 const list = [
-  { _id: "1T34ynEBPfFKXLS153g5",  appName: "express-demo-app", path: "/", userId: "P2002249295" },
-  { _id: "1T34ynEBPfFKXLS153g3",appName: "express-demo-app", path: "/handig", userId: "P2002249295" },
-  {_id: "1T34ynEBPfFKXLS153g9", appName: "express-dummy-app", path: "/logs", userId: "P2002249295" },
-  {_id: "1T34ynEBPfFKXLS153g8", appName: "express-demo-app", path: "/cats", userId: "P2002249295" },
-  {_id: "1T34ynEBPfFKXLS153g6", appName: "express-alt-app", path: "/dogs", userId: "P2002249295" },
-  {_id: "1T34ynEBPfFKXLS153g7", appName: "express-alt-app", path: "/vreemd", userId: "P2002249295" },
+  {
+    // _id: "1T34ynEBPfFKXLS153g5",
+    appName: "express-demo-app",
+    path: "/",
+    userId: "P2002249295",
+  },
+  {
+    // _id: "1T34ynEBPfFKXLS153g3",
+    appName: "express-demo-app",
+    path: "/handig",
+    userId: "P2002249295",
+  },
+  {
+    // _id: "1T34ynEBPfFKXLS153g9",
+    appName: "express-dummy-app",
+    path: "/logs",
+    userId: "P2002249295",
+  },
+  {
+    // _id: "1T34ynEBPfFKXLS153g8",
+    appName: "express-demo-app",
+    path: "/cats",
+    userId: "P2002249295",
+  },
+  {
+    // _id: "1T34ynEBPfFKXLS153g6",
+    appName: "express-alt-app",
+    path: "/dogs",
+    userId: "P2002249295",
+  },
+  {
+    // _id: "1T34ynEBPfFKXLS153g7",
+    appName: "express-alt-app",
+    path: "/vreemd",
+    userId: "P2002249295",
+  },
 ];
-const updatedWhitelist =   { _id: "1T34ynEBPfFKXLS153g5",  appName: "express-demo-app", path: "/eenAnderPath", userId: "P2002249295" }
+const updatedWhitelist = {
+  _id: "1T34ynEBPfFKXLS153g5",
+  appName: "express-demo-app",
+  path: "/eenAnderPath",
+  userId: "P2002249295",
+};
+// for(l of list){
+//   insertWhiteList(l).then(w=> console.log(w)).catch(errorMessage=>console.log(errorMessage));
 
-// insertWhiteList(list[0]).then(w=> console.log(w)).catch(errorMessage=>console.log(errorMessage));
+// }
+// updateWhiteList(updatedWhitelist)
+//   .then((w) => console.log(w))
+//   .catch((errorMessage) => console.log(errorMessage));
+// bulkReadWhiteListByUserId("P2002249295").then(w=> console.log(w)).catch(errorMessage=>console.log(errorMessage));
 
+// deleteWhitelist( {
+//   // _id: "1T34ynEBPfFKXLS153g5",
+//   appName: "express-demo-app",
+//   path: "/",
+//   userId: "P2002249295",
+// })
 module.exports = {
   updateDB: updateDB,
   initialiseDB: initialiseDB,
@@ -471,5 +512,9 @@ module.exports = {
   bulkUpdateLogs: bulkUpdateLogs,
   removeExpiredLogs: removeExpiredLogs,
   countLogs: countLogs,
+  bulkReadWhitelistByUserId: bulkReadWhitelistByUserId,
+  deleteWhitelist: deleteWhitelist,
+  updatedWhitelist: updateWhitelist,
+  insertWhitelist: insertWhitelist,
   db: db,
 };

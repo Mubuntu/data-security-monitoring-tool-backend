@@ -189,20 +189,56 @@ router.get("/logs/:count", async (req, res, next) => {
  * 
  */
 router.get("/whitelist/:userId", async (req, res, next) => {
-  
-});
+  const userId = req.params["userId"];
+  try{
+    const whitelisting = await dataStore.bulkReadWhitelistByUserId(userId);
+    // if(whitelisting.length>0){
+      return res.status(200).json(whitelisting);
+    // }
+  }catch(e){
+    console.log(e);
+    throw e;
+  }
+
+}); 
 
 /**
  * post a new whitelist object
  */
 router.post("/whitelist/:userId", async (req, res, next) => {
-  
+  const whitelistObj = req.body;
+  try{
+   const insertedWhitelist =  await dataStore.insertWhitelist(whitelistObj);
+    if(insertedWhitelist.length>0){
+      return res.status(201).json({message: `whitelist with id ${insertedWhitelist._id} created.`});
+    }
+    // zou een object moeten geven met een message.
+  }catch(e){
+    console.log(e);
+    if(e.message === "whitelist object exists already."){
+      return res.status(400).json({code: 400, message: e.message})
+    }
+    throw e;
+  }
 });
 /**
  * delete a whitelist object
  */
-router.post("/whitelist/:userId", async (req, res, next) => {
-  
+router.delete("/whitelist/:userId", async (req, res, next) => {
+  const whitelistObj = req.body;
+  try{
+   const recordsDeletedDeleted =  await dataStore.deleteWhitelist(whitelistObj);
+    if(recordsDeletedDeleted>0){
+      return res.status(201).json({message: `whitelist with id ${whitelistObj._id} has been removed.`});
+    }
+    // zou een object moeten geven met een message.
+  }catch(e){
+    console.log(e);
+    if(e.message === "whitelist object exists already."){
+      return res.status(400).json({ message: e.message})
+    }
+    throw e;
+  }
 });
 
 const totalSecuredAndInsecuredRequests = (logs) => {

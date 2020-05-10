@@ -199,10 +199,10 @@ const retrieveLogs = async (from, to) => {
   // }); // promise
 };
 
-const from = moment().subtract("30", "day");
+const from = moment().subtract("60", "day");
 const to = moment();
 
-retrieveLogs(from, to);
+// retrieveLogs(from, to);
 // setTimeout(() => console.log(data), 10000);
 
 module.exports = retrieveLogs;

@@ -64,6 +64,8 @@ const checkURI = str => {
 const convertToLocalTime = str => {
   let utcDate = moment.utc(str, "YYYY-MM-DDTHH:mm:ss");
   let lokaleTijd = moment(utcDate, "YYYY-MM-DDTHH:mm:ss").local();
+    // verwijder de seconden en milliseconden 
+    lokaleTijd = lokaleTijd.seconds(0).milliseconds(0);
   // console.log(lokaleTijd.toDate())
   return lokaleTijd.toDate();
 };
