@@ -169,12 +169,8 @@ const retrieveLogs = async (from, to) => {
         const bodyString = response.body;
         const logs = await logParser(bodyString);
         await db.bulkCreateLogs(logs).catch(console.log);
-        // callback voor readLogs
-        // const returnVariables = logs => {
-        //   simulate(logs);
-        // };
-        // zoek criteria:
-        //  const start = from.subtract(2, "hour").utcOffset(0).toDate(),  end =moment().toDate()
+      
+
         db.readLogs(from, to).then((logs)=>{
            simulate(logs)
          
@@ -188,10 +184,8 @@ const retrieveLogs = async (from, to) => {
         }
         console.log(e);
         throw e;
-        // reason.response is the transformed response
       });
 
-    // console.log("data from request: \n\n",response)
   } catch (e) {
     console.log(e);
     throw e;

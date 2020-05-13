@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
+
 const indexRouter = require("./routes/logRouter");
 const app = express();
 
@@ -19,11 +20,14 @@ if (!process.env["cf_user"] && !process.env["cf_password"]) {
   throw new Error("application does not contain environment variables");
 }
 
+
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(logger("dev"));
+app.use(express.urlencoded());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

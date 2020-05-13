@@ -1,20 +1,9 @@
 "use strict";
 const fs = require("fs");
-const moment = require("moment");
 const logModel = require("../db/model/logModel");
 
 const parse = async bodyString => {
   const body = JSON.parse(bodyString);
-  // raw logs
-  const hits = body.responses[0].hits.hits;
-
-  const length = hits.length;
-
-  const names = hits.map(h => h._source.component_name);
-  const apps = [...new Set(names)];
-  // console.log(apps)
-  const l = new Set();
-
   /**
    * we gaan een data structure implementeren:
    * key zal de application name zijn en value zal de log object zijn

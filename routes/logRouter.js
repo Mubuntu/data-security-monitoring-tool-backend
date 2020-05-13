@@ -193,10 +193,13 @@ router.get("/whitelist/:userId", async (req, res, next) => {
   try{
     const whitelisting = await dataStore.bulkReadWhitelistByUserId(userId);
     // if(whitelisting.length>0){
-      return res.status(200).json(whitelisting);
+      return res.status(200).json({whitelist: whitelisting});
     // }
   }catch(e){
     console.log(e);
+    if(e.message === "whitelist object exists already."){
+      return res.status(409).json({message: e.message})
+    }
     throw e;
   }
 
@@ -206,16 +209,21 @@ router.get("/whitelist/:userId", async (req, res, next) => {
  * post a new whitelist object
  */
 router.post("/whitelist/:userId", async (req, res, next) => {
-  const whitelistObj = req.body;
+  const appName = req.body.appName;
+  const path = req.body.path;
+  const userId = req.params["userId"];
+
   try{
-   const insertedWhitelist =  await dataStore.insertWhitelist(whitelistObj);
-    if(insertedWhitelist.length>0){
-      return res.status(201).json({message: `whitelist with id ${insertedWhitelist._id} created.`});
+   const insertedWhitelist =  await dataStore.insertWhitelist({appName: appName, path: path, userId: userId});
+    if(insertedWhitelist){
+      return res.status(201).json({message: `whitelist with id ${insertedWhitelist._id} has been created.`});
+    }else{
+    return   res.status(400).json({message: `whitelist object exists already.`});
     }
     // zou een object moeten geven met een message.
   }catch(e){
     console.log(e);
-    if(e.message === "whitelist object exists already."){
+    if(e.errorType === "uniqueViolated"|| e.message === "whitelist object exists already."){
       return res.status(400).json({code: 400, message: e.message})
     }
     throw e;
@@ -224,19 +232,19 @@ router.post("/whitelist/:userId", async (req, res, next) => {
 /**
  * delete a whitelist object
  */
-router.delete("/whitelist/:userId", async (req, res, next) => {
-  const whitelistObj = req.body;
+router.delete("/whitelist/:userId/:_id", async (req, res, next) => {
+  const whiteListId = req.params._id;
+  const userId = req.params.userId;
   try{
-   const recordsDeletedDeleted =  await dataStore.deleteWhitelist(whitelistObj);
+   const recordsDeletedDeleted =  await dataStore.deleteWhitelist({_id: whiteListId, userId: userId});
     if(recordsDeletedDeleted>0){
       return res.status(201).json({message: `whitelist with id ${whitelistObj._id} has been removed.`});
+    }else{
+        return res.status(403).json({message: "whitelist object was not found."})
     }
     // zou een object moeten geven met een message.
   }catch(e){
     console.log(e);
-    if(e.message === "whitelist object exists already."){
-      return res.status(400).json({ message: e.message})
-    }
     throw e;
   }
 });

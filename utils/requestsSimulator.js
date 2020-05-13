@@ -6,7 +6,7 @@ const axios = require("axios");
 const db = require("../db/dbPromises");
 
 // interceptor die alle responses waarvan de status niet 2xx is toch resolved
-const interceptor = axios.interceptors.response.use(
+ axios.interceptors.response.use(
   res => {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
@@ -90,7 +90,7 @@ const simulate = async logs => {
       .then(values => {
         // console.log(values);
         // schrijf response object weg naar logs
-        // endpoints.foreach( log.url === values.config.url)... bekijk prikbord voor img
+        // endpoints.foreach( log.url === values.config.url)
         let simulatedResponses = [];
         values.forEach(res => {
           let secured = false; 

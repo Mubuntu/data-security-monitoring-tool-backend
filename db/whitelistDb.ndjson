@@ -1,1 +1,3 @@
 {"_id":"1T34ynEBPfFKXLS153g5","appName":"express-demo-app","path":"/","userId":"P2002249295"}
+{"appName":"express-demo-app","path":"/login?username=PatrickFrison&password=test123","userId":"P2002249295","_id":"2mmVxVuTnA1xMRmX"}
+{"appName":"express-demo-app","path":"/users","userId":"P2002249295","_id":"ED6YHzVXbBHVyUhL"}
