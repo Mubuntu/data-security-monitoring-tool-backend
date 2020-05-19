@@ -4,8 +4,10 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
+const indexRouter = require("./routes/indexRouter");
+const logRouter = require("./routes/logRouter");
+const whitelistRouter = require("./routes/whitelistRouter");
 
-const indexRouter = require("./routes/logRouter");
 const app = express();
 
 const jobs = require("./cron/jobs");
@@ -20,17 +22,19 @@ if (!process.env["cf_user"] && !process.env["cf_password"]) {
   throw new Error("application does not contain environment variables");
 }
 
-
-
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+// app.set("views", path.join(__dirname, "views"));
+// app.set("view engine", "ejs");
 
-app.use(logger("dev"));
-app.use(express.urlencoded());
+app.use(logger("production"));
+// app.use(express.urlencoded());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+app.use("/", indexRouter);
+app.use("/logs", logRouter);
+app.use("/whitelist", whitelistRouter);
 app.use(express.static(path.join(__dirname, "public")));
 
 // haal alle logs op in de laatste 30 dagen.
@@ -41,7 +45,6 @@ logRetrieval(from, to);
 
 // start cronjobs
 jobs.start();
-app.use("/", indexRouter);
 
 // initialiseDB()
 
@@ -59,7 +62,8 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
+  // res.locals.error = req.app.get("env") === "development" ? err : {};
+  res.locals.error = req.app.get("env") === "development" ? err : err;
 
   // render the error page
   res.status(err.status || 500);

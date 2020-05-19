@@ -1,0 +1,37 @@
+---
+applications:
+# - name: express-demo-app
+#   random-route: true
+#   path: express-demo-app
+#   memory: 512M
+- name: secured-data-security-monitoring-tool-backend
+  # random-route: true
+  host: secured-data-security-monitoring-tool-backend
+  path: data-security-monitoring-tool-backend
+  command: node app.js
+  memory: 512M
+  disk_quota: 3G
+  buildpacks: 
+    - https://github.com/johnwen84/bluemix-puppeteer-buildpack
+    - https://github.com/cloudfoundry/nodejs-buildpack
+  instances: 1
+  domain: cfapps.eu10.hana.ondemand.com
+  services:
+    - myuaa
+- name: web
+  host: data-security-monitoring-tool-client
+  path: web
+  domain: cfapps.eu10.hana.ondemand.com
+  buildpack: nodejs_buildpack
+  memory: 128M
+  env:
+    destinations: >
+      [
+        {
+          "name":"secured-data-security-monitoring-tool-backend",
+          "url":"https://secured-data-security-monitoring-tool-backend.cfapps.eu10.hana.ondemand.com/",
+          "forwardAuthToken": true
+        }
+      ]
+  services:
+    - myuaa

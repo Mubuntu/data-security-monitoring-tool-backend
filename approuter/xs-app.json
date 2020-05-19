@@ -1,0 +1,12 @@
+{
+    "routes": [{
+      "source": "^/whitelist/(.*)$",
+      "target": "/whitelist/$1",
+      "destination": "logsAPI"
+    },
+    {
+      "source": "^/logs/(.*)$",
+      "target": "/logs/$1",
+      "destination": "logsAPI"
+    }]
+  }

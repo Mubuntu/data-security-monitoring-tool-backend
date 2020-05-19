@@ -2,8 +2,19 @@
 const fs = require("fs");
 const logModel = require("../db/model/logModel");
 
-const parse = async bodyString => {
+const parse = async (bodyString) => {
   const body = JSON.parse(bodyString);
+
+  const hits = body.responses[0].hits.hits;
+
+  const length = hits.length;
+
+  const names = hits.map((h) => h._source.component_name);
+  const apps = [...new Set(names)];
+  
+  // console.log(apps)
+  const l = new Set();
+
   /**
    * we gaan een data structure implementeren:
    * key zal de application name zijn en value zal de log object zijn
@@ -16,11 +27,11 @@ const parse = async bodyString => {
   //  return rawLog._source.layer === "[CF.RTR]" ;
   // });
   let filteredLogs = hits.filter(
-    rawLog =>
+    (rawLog) =>
       rawLog._source.layer === "[CF.RTR]" &&
       rawLog._source.user_agent !== "axios/0.19.2"
   );
-  let logs = filteredLogs.map(rawLog => {
+  let logs = filteredLogs.map((rawLog) => {
     // enkel logs gegeneerd door de Cloud Foundry Router opnemen
     const log = logModel(rawLog);
     return log;

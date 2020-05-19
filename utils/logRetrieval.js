@@ -168,7 +168,7 @@ const retrieveLogs = async (from, to) => {
         //======================== PARSE individual logs and retrieve necessary components ==========================================
         const bodyString = response.body;
         const logs = await logParser(bodyString);
-        await db.bulkCreateLogs(logs).catch(console.log);
+        await db.bulkCreattrigeLogs(logs).catch(console.log);
       
 
         db.readLogs(from, to).then((logs)=>{

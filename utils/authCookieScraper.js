@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs").promises;
-const cookiePath = "./tmp/sap-cloud-cookie.json";
+// const cookiePath = "./tmp/sap-cloud-cookie.json";
 const username = process.env["cf_user"] || "patrick.frison@amista.be";
 const password = process.env["cf_password"] || "N6Dq5*E$tvkz";
 
@@ -30,7 +30,7 @@ const retrieveCookie = () => {
 
       cookies.forEach(c => (c.url = "https://logs.cf.eu10.hana.ondemand.com/"));
       //   console.log(cookies)
-      fs.writeFile(cookiePath, JSON.stringify(cookies, null, 2));
+      // fs.writeFile(cookiePath, JSON.stringify(cookies, null, 2));
 
       const authCookie = cookies.find(c => c.name.includes("goauth-goauth-1"));
       await page.close();
