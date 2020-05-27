@@ -6,7 +6,7 @@ applications:
 #   memory: 512M
 - name: secured-data-security-monitoring-tool-backend
   # random-route: true
-  host: secured-data-security-monitoring-tool-backend
+  # host: secured-data-security-monitoring-tool-backend
   path: data-security-monitoring-tool-backend
   command: node app.js
   memory: 512M

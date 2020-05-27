@@ -296,46 +296,97 @@ const removeExpiredLogs = (expirationDate) => {
 const insertWhitelist = (whitelist) => {
   return new Promise((resolve, reject) => {
     try {
-      // eerst zoeken of whitelist alvast al bestaat. 
+      var isArray = false;
+      let query = {};
+      if (typeof whitelist === "object" && whitelist.length > 0) {
+        isArray = true;
+        var queryArray = [];
+        whitelist.forEach((w) => {
+          var queryItem = {
+            userId: w.userId,
+            appName: w.appName,
+            path: w.path,
+          };
+          queryArray.push(queryItem);
+        });
+
+        query = { $or: queryArray };
+      } else {
+        query = {
+          $and: [
+            { userId: whitelist.userId },
+            { appName: whitelist.appName },
+            { path: whitelist.path },
+          ],
+        };
+      }
+      // eerst zoeken of whitelist alvast al bestaat.
       db.whitelist
-      .find({ $and: [{userId: whitelist.userId }, {appName: whitelist.appName}, {path: whitelist.path}]})
-      .then((foundWhitelistings) => {
-          if(foundWhitelistings.length>0){
+        .find(query)
+        .then((foundWhitelistings) => {
+          if (foundWhitelistings.length > 0) {
+            if (typeof whitelist === "object" && !isArray) {
               return reject(new Error("whitelist object exists already."));
-              
+            } else if (whitelist.length === foundWhitelistings.length) {
+              return reject(
+                new Error("whitelist objects  already exist in DB.")
+              );
+            } else if (foundWhitelistings.length < whitelist.length) {
+              // remove whitelists that have been found from the new array list that will be inserted:
+              whitelist = whitelist.filter((w) => {
+                var isNotcreated = true;
+                foundWhitelistings.forEach((fw) => {
+                  if (
+                    w.appName === fw.appName &&
+                    w.path === fw.path &&
+                    w.userId === fw.userId
+                  ) {
+                    isNotcreated = false;
+                    return;
+                  }
+                });
+                return isNotcreated;
+              });
+            }
           }
+          
           db.whitelist
-          .insert(whitelist)
-          .then((insertedWhitelist) => {
-            // if (
-            //   insertedWhitelist === undefined ||
-            //   insertedWhitelist.length === 0
-            // ) {
-            //   console.log("0 whitelists inserted");
-            //   return resolve([]);
-            // }
-  
-           console.log(
+            .insert(whitelist)
+            .then((insertedWhitelist) => {
+              // if (
+              //   insertedWhitelist === undefined ||
+              //   insertedWhitelist.length === 0
+              // ) {
+              //   console.log("0 whitelists inserted");
+              //   return resolve([]);
+              // }
+              if (Number.isInteger(insertedWhitelist.length)) {
+                console.log(
+                  ` ${insertedWhitelist.length} whitelist objects have been created.`
+                );
+              } else {
+                console.log(
                   `whitelist with id: ${insertedWhitelist._id} has been inserted.`
                 );
-            return resolve(insertedWhitelist);
-          })
-          .catch((err) => {
-            const errorType = err.errorType;
-            if (errorType === "uniqueViolated") {
-              return reject(err.message);
-            }
+              }
 
-            throw err;
-          });
-      })
-      .catch((err) => {
-        // if(err.message === "whitelist object exists already."){
-        //   return reject(err);
-        // }
-        throw err;
-      });
-     
+              return resolve(insertedWhitelist);
+            })
+            .catch((err) => {
+              const errorType = err.errorType;
+              if (errorType === "uniqueViolated") {
+                return reject(err.message);
+              }
+
+              throw err;
+            });
+        })
+        .catch((err) => {
+          // if(err.message === "whitelist object exists already."){
+          //   return reject(err);
+          // }
+          throw err;
+        });
     } catch (e) {
       console.log(e);
       throw e;
@@ -372,21 +423,19 @@ const updateWhitelist = async (whitelist) => {
 };
 
 /**
- *  delete a  whitelist object based dit moet worden aangepast zodat ge enkel een object Id moet meegeven. 
+ *  delete a  whitelist object based dit moet worden aangepast zodat ge enkel een object Id moet meegeven.
  */
-const deleteWhitelist = async ({_id, userId}) => {
+const deleteWhitelist = async ({ _id, userId }) => {
   return new Promise((resolve, reject) => {
     try {
       db.whitelist
-        .remove({$and: [{_id: _id}, {userId: userId}]})
+        .remove({ $and: [{ _id: _id }, { userId: userId }] })
         // .remove({ $and: [{userId: whitelist.userId }, {appName: whitelist.appName}, {path: whitelist.path}]})
         .then((numOfWhitelistRemoved) => {
-          if (numOfWhitelistRemoved > 0){
-            console.log(
-              ` whitelist object with id ${_id} has been removed.`
-            );
-            return resolve(numOfWhitelistRemoved)}
-          else {
+          if (numOfWhitelistRemoved > 0) {
+            console.log(` whitelist object with id ${_id} has been removed.`);
+            return resolve(numOfWhitelistRemoved);
+          } else {
             console.log("no whitelist object has been removed");
             resolve(0);
           }
@@ -410,9 +459,8 @@ const bulkReadWhitelistByUserId = async (userId) => {
       db.whitelist
         .find({ userId: userId })
         .then((foundWhitelistings) => {
-              console.log(`${foundWhitelistings.length} whitelist objects found.`)
-              return resolve(foundWhitelistings);
-         
+          console.log(`${foundWhitelistings.length} whitelist objects found.`);
+          return resolve(foundWhitelistings);
         })
         .catch((err) => {
           throw err;
@@ -423,7 +471,6 @@ const bulkReadWhitelistByUserId = async (userId) => {
     }
   });
 };
-
 
 const from = moment().subtract("24", "hours");
 const to = moment();
@@ -441,7 +488,6 @@ const end = moment();
 //   console.log(logs);
 // })
 // .catch(console.log);
-
 
 const list = [
   {
